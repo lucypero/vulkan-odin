@@ -1,0 +1,5 @@
+- might not need to amke two debugmessengercreateinfo's.. try getting read of the populate proc
+
+- some vulkan functions need to be loaded after the vulkan instance has been created.. gb's vulkan script needs some work.. you need a different loader for those functions that take vk_instance and they need to be called after vkCreateInstance
+
+- the debug callback doesn't seem to work..

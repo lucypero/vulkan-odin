@@ -1,3 +1,5 @@
+# this is not required to run if you already have the vulkan bindings (vulkan folder with .odin files)
+
 import re
 import urllib.request as req
 from tokenize import tokenize
@@ -7,6 +9,27 @@ import os.path
 import math
 
 c_output_path = "vulkan/c/"
+
+
+# NOTE(lucypero): cleaner way, maybe
+# vulkan_repo_include = "https://raw.githubusercontent.com/KhronosGroup/Vulkan-Headers/master/include/vulkan/"
+# vulkan_files = [
+#     "vulkan_core.h",
+#     "vk_platform.h",
+#     "vk_layer.h",
+#     "vk_icd.h",
+#     "vulkan_win32.h",
+#     "vulkan_metal.h",
+#     "vulkan_macos.h",
+#     "vulkan_ios.h",
+# ]
+
+# for vk_file in vulkan_files:
+#     if not os.path.isfile(c_output_path + vk_file):
+#         src = req.urlopen(vulkan_repo_include + vk_file).read().decode("utf-8")
+#         with open(c_output_path + vk_file, "w") as f:
+#             f.write(src)
+
 
 if not os.path.isfile(c_output_path+"vulkan_core.h"):
     src = req.urlopen("https://raw.githubusercontent.com/KhronosGroup/Vulkan-Headers/master/include/vulkan/vulkan_core.h").read().decode('utf-8')

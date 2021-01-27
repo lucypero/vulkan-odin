@@ -175,8 +175,10 @@ memleak_dump :: proc( memleak_alloc : mem.Allocator, dump_proc : proc(message:st
 	}
 
 	things_went_wrong : bool;
-	if (len(memleak.allocations) - tmp_check > 0 ||
-	    memleak.unexpected_frees > 0) do things_went_wrong = true;
+	if (len(memleak.allocations) - tmp_check > 0 || memleak.unexpected_frees > 0)
+	{
+		things_went_wrong = true;
+	}
 
 
 	dump_proc(fmt.tprintf("{0} memory leaks detected!", len(memleak.allocations) - tmp_check), things_went_wrong, user_data);

@@ -11,10 +11,14 @@ import "core:runtime"
 import "core:os"
 import m "core:math/linalg"
 import "util"
+import "core:time"
 
 //glfw State
 glfw_window : glfw.Window_Handle;
 framebuffer_resized : bool;
+
+// time
+start_time : time.Time;
 
 // Vulkan State (some state is still declared in main() i believe)
 vk_swapchain : vk.SwapchainKHR;
@@ -70,11 +74,9 @@ Vertex :: struct
   col : m.Vector3,
 };
 
-Mat4 :: [4][4]f32;
-
 UniformBufferObject :: struct
 {
-  model, view, proj : Mat4,
+  model, view, proj : m.Matrix4,
 };
 
 get_binding_description :: proc() -> vk.VertexInputBindingDescription
@@ -375,9 +377,38 @@ VulkanDebugCallback : vk.ProcDebugUtilsMessengerCallbackEXT : proc "stdcall"( me
 
 update_uniform_buffer :: proc(current_image : u32)
 {
-  //u were here...
-  #assert(false);
+    current_time := time.now();
+    time := time.diff(start_time, current_time); // i think this is usec
 
+    // fmt.println("time diff:", time);
+
+    // UniformBufferObject ubo{};
+    // ubo.model = glm::rotate(glm::mat4(1.0f), time * glm::radians(90.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+// ubo.model = glm::rotate(glm::mat4(1.0f), time * glm::radians(90.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+// ubo.view = glm::lookAt(glm::vec3(2.0f, 2.0f, 2.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+// ubo.proj = glm::perspective(glm::radians(45.0f), swapChainExtent.width / (float) swapChainExtent.height, 0.1f, 10.0f);
+
+// glm::perspective(fov, aspect_ratio, near, far);
+
+// matrix4_perspective :: proc(fovy, aspect, near, far: Float, flip_z_axis := true) -> (m: Matrix4) {
+
+    ubo : UniformBufferObject = {
+      model = m.matrix4_rotate(f32(time) * 90., m.Vector3{0.,0.,1.}),
+      view = m.matrix4_look_at(m.Vector3{2., 2., 2.}, m.Vector3{0.,0.,0.}, m.Vector3{0.,0.,1.}),
+      proj = m.matrix4_perspective(45., f32(swapchain_extent.width) / f32(swapchain_extent.height), 0.1, 10.),
+    };
+
+    ubo.proj[1][1] *= -1;
+
+    // void* data;
+    // vkMapMemory(device, uniformBuffersMemory[currentImage], 0, sizeof(ubo), 0, &data);
+    //     memcpy(data, &ubo, sizeof(ubo));
+    // vkUnmapMemory(device, uniformBuffersMemory[currentImage]);
+
+    data : rawptr;
+    vk.MapMemory(vk_device, uniform_buffers_memory[current_image], 0, size_of(ubo), nil, &data);
+    mem.copy(data, &ubo, size_of(ubo));
+    vk.UnmapMemory(vk_device, uniform_buffers_memory[current_image]);
 }
 
 find_queue_families :: proc(device : vk.PhysicalDevice, surface : vk.SurfaceKHR) -> QueueFamilyIndices 
@@ -1141,6 +1172,10 @@ draw_frame :: proc()
 
 main :: proc()
 {
+
+  // static auto startTime = std::chrono::high_resolution_clock::now();
+  start_time = time.now();
+
   when ODIN_DEBUG do context.allocator = util.memleak_allocator(true);
   when ODIN_DEBUG do defer util.memleak_dump(context.allocator, dump_proc, nil);
 

@@ -1,6 +1,6 @@
 @echo off
 
-:: for the first run you need to:
+:: if the vulkan bindings are not generated, do:
 ::   create folders vulkan/ and vulkan/c
 ::   run "python create_vulkan_odin_wrapper.py"
 
@@ -8,7 +8,7 @@
 pushd build
 glslc ..\shaders\shader.vert -o vert.spv
 glslc ..\shaders\shader.frag -o frag.spv
-odin run ..\main.odin -debug
+odin build ..\main.odin -debug
 popd
 
 :: F8 to compile in my vim

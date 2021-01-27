@@ -69,7 +69,7 @@ def convert_type(t):
 	}
 
 	regex_table = {
-		r"const (\S*)\* const\*": "^^{}",
+		r"const (\S*)\* const\*": "^^{0[0]}",
 	}
 
 	if t in table.keys():
@@ -78,12 +78,10 @@ def convert_type(t):
 	for reg in regex_table.keys():
 		match = re.fullmatch(reg, t)
 		if match:
-			#converting the group
 			converted_types = []
 			for sub_type in match.groups():
 				converted_types.append(convert_type(sub_type))
-			output_str = regex_table[reg].format(*converted_types)
-			print("regex output:", output_str)
+			output_str = regex_table[reg].format(converted_types)
 			return output_str
 
 	if t == "":
@@ -473,7 +471,6 @@ def group_functions(f):
 		if table_name in ('Device', 'Queue', 'CommandBuffer') and name != 'GetDeviceProcAddr':
 			group_map["Device"].append(nn)
 		elif table_name in ('Instance', 'PhysicalDevice') or name == 'GetDeviceProcAddr' or name == 'ProcDebugUtilsMessengerCallbackEXT':
-			print(name)
 			group_map["Instance"].append(nn)
 		elif table_name in ('rawptr', '', 'DebugReportFlagsEXT') or name == 'GetInstanceProcAddr':
 			# Skip the allocation function and the dll entry point

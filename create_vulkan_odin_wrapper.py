@@ -63,13 +63,12 @@ def convert_type(t):
 		"const void*": 'rawptr',
 		"const char*": 'cstring',
 		"const char* const*": 'cstring_array',
-		"struct BaseOutStructure": "BaseOutStructure",
-		"struct BaseInStructure":  "BaseInStructure",
 		'v': '',
 	}
 
 	regex_table = {
 		r"const (\S*)\* const\*": "^^{0[0]}",
+		r"struct (\S*)": "{0[0]}"
 	}
 
 	if t in table.keys():

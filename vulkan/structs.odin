@@ -6,17 +6,17 @@ package vulkan
 import "core:c"
 
 when ODIN_OS == "windows" {
-    import win32 "core:sys/windows"
+	import win32 "core:sys/windows"
 
-    HINSTANCE           :: win32.HINSTANCE;
-    HWND                :: win32.HWND;
-    HMONITOR            :: win32.HMONITOR;
-    HANDLE              :: win32.HANDLE;
-    LPCWSTR             :: win32.LPCWSTR;
-    SECURITY_ATTRIBUTES :: win32.SECURITY_ATTRIBUTES;
-    DWORD               :: win32.DWORD;
+	HINSTANCE           :: win32.HINSTANCE;
+	HWND                :: win32.HWND;
+	HMONITOR            :: win32.HMONITOR;
+	HANDLE              :: win32.HANDLE;
+	LPCWSTR             :: win32.LPCWSTR;
+	SECURITY_ATTRIBUTES :: win32.SECURITY_ATTRIBUTES;
+	DWORD               :: win32.DWORD;
 }
-
+		
 Extent2D :: struct {
 	width:  u32,
 	height: u32,
@@ -2501,6 +2501,63 @@ PhysicalDeviceShaderClockFeaturesKHR :: struct {
 	shaderDeviceClock:   b32,
 }
 
+PhysicalDeviceShaderTerminateInvocationFeaturesKHR :: struct {
+	sType:                     StructureType,
+	pNext:                     rawptr,
+	shaderTerminateInvocation: b32,
+}
+
+FragmentShadingRateAttachmentInfoKHR :: struct {
+	sType:                          StructureType,
+	pNext:                          rawptr,
+	pFragmentShadingRateAttachment: ^AttachmentReference2,
+	shadingRateAttachmentTexelSize: Extent2D,
+}
+
+PipelineFragmentShadingRateStateCreateInfoKHR :: struct {
+	sType:        StructureType,
+	pNext:        rawptr,
+	fragmentSize: Extent2D,
+	combinerOps:  [2]FragmentShadingRateCombinerOpKHR,
+}
+
+PhysicalDeviceFragmentShadingRateFeaturesKHR :: struct {
+	sType:                         StructureType,
+	pNext:                         rawptr,
+	pipelineFragmentShadingRate:   b32,
+	primitiveFragmentShadingRate:  b32,
+	attachmentFragmentShadingRate: b32,
+}
+
+PhysicalDeviceFragmentShadingRatePropertiesKHR :: struct {
+	sType:                                                StructureType,
+	pNext:                                                rawptr,
+	minFragmentShadingRateAttachmentTexelSize:            Extent2D,
+	maxFragmentShadingRateAttachmentTexelSize:            Extent2D,
+	maxFragmentShadingRateAttachmentTexelSizeAspectRatio: u32,
+	primitiveFragmentShadingRateWithMultipleViewports:    b32,
+	layeredShadingRateAttachments:                        b32,
+	fragmentShadingRateNonTrivialCombinerOps:             b32,
+	maxFragmentSize:                                      Extent2D,
+	maxFragmentSizeAspectRatio:                           u32,
+	maxFragmentShadingRateCoverageSamples:                u32,
+	maxFragmentShadingRateRasterizationSamples:           SampleCountFlags,
+	fragmentShadingRateWithShaderDepthStencilWrites:      b32,
+	fragmentShadingRateWithSampleMask:                    b32,
+	fragmentShadingRateWithShaderSampleMask:              b32,
+	fragmentShadingRateWithConservativeRasterization:     b32,
+	fragmentShadingRateWithFragmentShaderInterlock:       b32,
+	fragmentShadingRateWithCustomSampleLocations:         b32,
+	fragmentShadingRateStrictMultiplyCombiner:            b32,
+}
+
+PhysicalDeviceFragmentShadingRateKHR :: struct {
+	sType:        StructureType,
+	pNext:        rawptr,
+	sampleCounts: SampleCountFlags,
+	fragmentSize: Extent2D,
+}
+
 SurfaceProtectedCapabilitiesKHR :: struct {
 	sType:             StructureType,
 	pNext:             rawptr,
@@ -2559,6 +2616,139 @@ PipelineExecutableInternalRepresentationKHR :: struct {
 	isText:      b32,
 	dataSize:    int,
 	pData:       rawptr,
+}
+
+PipelineLibraryCreateInfoKHR :: struct {
+	sType:        StructureType,
+	pNext:        rawptr,
+	libraryCount: u32,
+	pLibraries:   ^Pipeline,
+}
+
+PhysicalDeviceZeroInitializeWorkgroupMemoryFeaturesKHR :: struct {
+	sType:                               StructureType,
+	pNext:                               rawptr,
+	shaderZeroInitializeWorkgroupMemory: b32,
+}
+
+PhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR :: struct {
+	sType:                                          StructureType,
+	pNext:                                          rawptr,
+	workgroupMemoryExplicitLayout:                  b32,
+	workgroupMemoryExplicitLayoutScalarBlockLayout: b32,
+	workgroupMemoryExplicitLayout8BitAccess:        b32,
+	workgroupMemoryExplicitLayout16BitAccess:       b32,
+}
+
+BufferCopy2KHR :: struct {
+	sType:     StructureType,
+	pNext:     rawptr,
+	srcOffset: DeviceSize,
+	dstOffset: DeviceSize,
+	size:      DeviceSize,
+}
+
+CopyBufferInfo2KHR :: struct {
+	sType:       StructureType,
+	pNext:       rawptr,
+	srcBuffer:   Buffer,
+	dstBuffer:   Buffer,
+	regionCount: u32,
+	pRegions:    ^BufferCopy2KHR,
+}
+
+ImageCopy2KHR :: struct {
+	sType:          StructureType,
+	pNext:          rawptr,
+	srcSubresource: ImageSubresourceLayers,
+	srcOffset:      Offset3D,
+	dstSubresource: ImageSubresourceLayers,
+	dstOffset:      Offset3D,
+	extent:         Extent3D,
+}
+
+CopyImageInfo2KHR :: struct {
+	sType:          StructureType,
+	pNext:          rawptr,
+	srcImage:       Image,
+	srcImageLayout: ImageLayout,
+	dstImage:       Image,
+	dstImageLayout: ImageLayout,
+	regionCount:    u32,
+	pRegions:       ^ImageCopy2KHR,
+}
+
+BufferImageCopy2KHR :: struct {
+	sType:             StructureType,
+	pNext:             rawptr,
+	bufferOffset:      DeviceSize,
+	bufferRowLength:   u32,
+	bufferImageHeight: u32,
+	imageSubresource:  ImageSubresourceLayers,
+	imageOffset:       Offset3D,
+	imageExtent:       Extent3D,
+}
+
+CopyBufferToImageInfo2KHR :: struct {
+	sType:          StructureType,
+	pNext:          rawptr,
+	srcBuffer:      Buffer,
+	dstImage:       Image,
+	dstImageLayout: ImageLayout,
+	regionCount:    u32,
+	pRegions:       ^BufferImageCopy2KHR,
+}
+
+CopyImageToBufferInfo2KHR :: struct {
+	sType:          StructureType,
+	pNext:          rawptr,
+	srcImage:       Image,
+	srcImageLayout: ImageLayout,
+	dstBuffer:      Buffer,
+	regionCount:    u32,
+	pRegions:       ^BufferImageCopy2KHR,
+}
+
+ImageBlit2KHR :: struct {
+	sType:          StructureType,
+	pNext:          rawptr,
+	srcSubresource: ImageSubresourceLayers,
+	srcOffsets:     [2]Offset3D,
+	dstSubresource: ImageSubresourceLayers,
+	dstOffsets:     [2]Offset3D,
+}
+
+BlitImageInfo2KHR :: struct {
+	sType:          StructureType,
+	pNext:          rawptr,
+	srcImage:       Image,
+	srcImageLayout: ImageLayout,
+	dstImage:       Image,
+	dstImageLayout: ImageLayout,
+	regionCount:    u32,
+	pRegions:       ^ImageBlit2KHR,
+	filter:         Filter,
+}
+
+ImageResolve2KHR :: struct {
+	sType:          StructureType,
+	pNext:          rawptr,
+	srcSubresource: ImageSubresourceLayers,
+	srcOffset:      Offset3D,
+	dstSubresource: ImageSubresourceLayers,
+	dstOffset:      Offset3D,
+	extent:         Extent3D,
+}
+
+ResolveImageInfo2KHR :: struct {
+	sType:          StructureType,
+	pNext:          rawptr,
+	srcImage:       Image,
+	srcImageLayout: ImageLayout,
+	dstImage:       Image,
+	dstImageLayout: ImageLayout,
+	regionCount:    u32,
+	pRegions:       ^ImageResolve2KHR,
 }
 
 DebugReportCallbackCreateInfoEXT :: struct {
@@ -3301,21 +3491,21 @@ AccelerationStructureCreateInfoNV :: struct {
 	info:          AccelerationStructureInfoNV,
 }
 
-BindAccelerationStructureMemoryInfoKHR :: struct {
+BindAccelerationStructureMemoryInfoNV :: struct {
 	sType:                 StructureType,
 	pNext:                 rawptr,
-	accelerationStructure: AccelerationStructureKHR,
+	accelerationStructure: AccelerationStructureNV,
 	memory:                DeviceMemory,
 	memoryOffset:          DeviceSize,
 	deviceIndexCount:      u32,
 	pDeviceIndices:        ^u32,
 }
 
-WriteDescriptorSetAccelerationStructureKHR :: struct {
+WriteDescriptorSetAccelerationStructureNV :: struct {
 	sType:                      StructureType,
 	pNext:                      rawptr,
 	accelerationStructureCount: u32,
-	pAccelerationStructures:    ^AccelerationStructureKHR,
+	pAccelerationStructures:    ^AccelerationStructureNV,
 }
 
 AccelerationStructureMemoryRequirementsInfoNV :: struct {
@@ -3691,6 +3881,13 @@ PhysicalDeviceCoherentMemoryFeaturesAMD :: struct {
 	deviceCoherentMemory: b32,
 }
 
+PhysicalDeviceShaderImageAtomicInt64FeaturesEXT :: struct {
+	sType:                   StructureType,
+	pNext:                   rawptr,
+	shaderImageInt64Atomics: b32,
+	sparseImageInt64Atomics: b32,
+}
+
 PhysicalDeviceMemoryBudgetPropertiesEXT :: struct {
 	sType:      StructureType,
 	pNext:      rawptr,
@@ -4025,6 +4222,32 @@ CommandBufferInheritanceRenderPassTransformInfoQCOM :: struct {
 	renderArea: Rect2D,
 }
 
+PhysicalDeviceDeviceMemoryReportFeaturesEXT :: struct {
+	sType:              StructureType,
+	pNext:              rawptr,
+	deviceMemoryReport: b32,
+}
+
+DeviceMemoryReportCallbackDataEXT :: struct {
+	sType:          StructureType,
+	pNext:          rawptr,
+	flags:          DeviceMemoryReportFlagsEXT,
+	type:           DeviceMemoryReportEventTypeEXT,
+	memoryObjectId: u64,
+	size:           DeviceSize,
+	objectType:     ObjectType,
+	objectHandle:   u64,
+	heapIndex:      u32,
+}
+
+DeviceDeviceMemoryReportCreateInfoEXT :: struct {
+	sType:           StructureType,
+	pNext:           rawptr,
+	flags:           DeviceMemoryReportFlagsEXT,
+	pfnUserCallback: ProcDeviceMemoryReportCallbackEXT,
+	pUserData:       rawptr,
+}
+
 PhysicalDeviceRobustness2FeaturesEXT :: struct {
 	sType:               StructureType,
 	pNext:               rawptr,
@@ -4096,6 +4319,28 @@ DeviceDiagnosticsConfigCreateInfoNV :: struct {
 	flags: DeviceDiagnosticsConfigFlagsNV,
 }
 
+PhysicalDeviceFragmentShadingRateEnumsFeaturesNV :: struct {
+	sType:                            StructureType,
+	pNext:                            rawptr,
+	fragmentShadingRateEnums:         b32,
+	supersampleFragmentShadingRates:  b32,
+	noInvocationFragmentShadingRates: b32,
+}
+
+PhysicalDeviceFragmentShadingRateEnumsPropertiesNV :: struct {
+	sType:                                 StructureType,
+	pNext:                                 rawptr,
+	maxFragmentShadingRateInvocationCount: SampleCountFlags,
+}
+
+PipelineFragmentShadingRateEnumStateCreateInfoNV :: struct {
+	sType:           StructureType,
+	pNext:           rawptr,
+	shadingRateType: FragmentShadingRateTypeNV,
+	shadingRate:     FragmentShadingRateNV,
+	combinerOps:     [2]FragmentShadingRateCombinerOpKHR,
+}
+
 PhysicalDeviceFragmentDensityMap2FeaturesEXT :: struct {
 	sType:                      StructureType,
 	pNext:                      rawptr,
@@ -4111,6 +4356,12 @@ PhysicalDeviceFragmentDensityMap2PropertiesEXT :: struct {
 	maxDescriptorSetSubsampledSamplers:        u32,
 }
 
+CopyCommandTransformInfoQCOM :: struct {
+	sType:     StructureType,
+	pNext:     rawptr,
+	transform: SurfaceTransformFlagsKHR,
+}
+
 PhysicalDeviceImageRobustnessFeaturesEXT :: struct {
 	sType:             StructureType,
 	pNext:             rawptr,
@@ -4122,6 +4373,256 @@ PhysicalDevice4444FormatsFeaturesEXT :: struct {
 	pNext:          rawptr,
 	formatA4R4G4B4: b32,
 	formatA4B4G4R4: b32,
+}
+
+PhysicalDeviceMutableDescriptorTypeFeaturesVALVE :: struct {
+	sType:                 StructureType,
+	pNext:                 rawptr,
+	mutableDescriptorType: b32,
+}
+
+MutableDescriptorTypeListVALVE :: struct {
+	descriptorTypeCount: u32,
+	pDescriptorTypes:    ^DescriptorType,
+}
+
+MutableDescriptorTypeCreateInfoVALVE :: struct {
+	sType:                          StructureType,
+	pNext:                          rawptr,
+	mutableDescriptorTypeListCount: u32,
+	pMutableDescriptorTypeLists:    ^MutableDescriptorTypeListVALVE,
+}
+
+DeviceOrHostAddressKHR :: struct #raw_union {
+	deviceAddress: DeviceAddress,
+	hostAddress:   rawptr,
+}
+
+DeviceOrHostAddressConstKHR :: struct #raw_union {
+	deviceAddress: DeviceAddress,
+	hostAddress:   rawptr,
+}
+
+AccelerationStructureBuildRangeInfoKHR :: struct {
+	primitiveCount:  u32,
+	primitiveOffset: u32,
+	firstVertex:     u32,
+	transformOffset: u32,
+}
+
+AccelerationStructureGeometryTrianglesDataKHR :: struct {
+	sType:         StructureType,
+	pNext:         rawptr,
+	vertexFormat:  Format,
+	vertexData:    DeviceOrHostAddressConstKHR,
+	vertexStride:  DeviceSize,
+	maxVertex:     u32,
+	indexType:     IndexType,
+	indexData:     DeviceOrHostAddressConstKHR,
+	transformData: DeviceOrHostAddressConstKHR,
+}
+
+AccelerationStructureGeometryAabbsDataKHR :: struct {
+	sType:  StructureType,
+	pNext:  rawptr,
+	data:   DeviceOrHostAddressConstKHR,
+	stride: DeviceSize,
+}
+
+AccelerationStructureGeometryInstancesDataKHR :: struct {
+	sType:           StructureType,
+	pNext:           rawptr,
+	arrayOfPointers: b32,
+	data:            DeviceOrHostAddressConstKHR,
+}
+
+AccelerationStructureGeometryDataKHR :: struct #raw_union {
+	triangles: AccelerationStructureGeometryTrianglesDataKHR,
+	aabbs:     AccelerationStructureGeometryAabbsDataKHR,
+	instances: AccelerationStructureGeometryInstancesDataKHR,
+}
+
+AccelerationStructureGeometryKHR :: struct {
+	sType:        StructureType,
+	pNext:        rawptr,
+	geometryType: GeometryTypeKHR,
+	geometry:     AccelerationStructureGeometryDataKHR,
+	flags:        GeometryFlagsKHR,
+}
+
+AccelerationStructureBuildGeometryInfoKHR :: struct {
+	sType:                    StructureType,
+	pNext:                    rawptr,
+	type:                     AccelerationStructureTypeKHR,
+	flags:                    BuildAccelerationStructureFlagsKHR,
+	mode:                     BuildAccelerationStructureModeKHR,
+	srcAccelerationStructure: AccelerationStructureKHR,
+	dstAccelerationStructure: AccelerationStructureKHR,
+	geometryCount:            u32,
+	pGeometries:              ^AccelerationStructureGeometryKHR,
+	ppGeometries:             ^^AccelerationStructureGeometryKHR,
+	scratchData:              DeviceOrHostAddressKHR,
+}
+
+AccelerationStructureCreateInfoKHR :: struct {
+	sType:         StructureType,
+	pNext:         rawptr,
+	createFlags:   AccelerationStructureCreateFlagsKHR,
+	buffer:        Buffer,
+	offset:        DeviceSize,
+	size:          DeviceSize,
+	type:          AccelerationStructureTypeKHR,
+	deviceAddress: DeviceAddress,
+}
+
+WriteDescriptorSetAccelerationStructureKHR :: struct {
+	sType:                      StructureType,
+	pNext:                      rawptr,
+	accelerationStructureCount: u32,
+	pAccelerationStructures:    ^AccelerationStructureKHR,
+}
+
+PhysicalDeviceAccelerationStructureFeaturesKHR :: struct {
+	sType:                                                 StructureType,
+	pNext:                                                 rawptr,
+	accelerationStructure:                                 b32,
+	accelerationStructureCaptureReplay:                    b32,
+	accelerationStructureIndirectBuild:                    b32,
+	accelerationStructureHostCommands:                     b32,
+	descriptorBindingAccelerationStructureUpdateAfterBind: b32,
+}
+
+PhysicalDeviceAccelerationStructurePropertiesKHR :: struct {
+	sType:                                                      StructureType,
+	pNext:                                                      rawptr,
+	maxGeometryCount:                                           u64,
+	maxInstanceCount:                                           u64,
+	maxPrimitiveCount:                                          u64,
+	maxPerStageDescriptorAccelerationStructures:                u32,
+	maxPerStageDescriptorUpdateAfterBindAccelerationStructures: u32,
+	maxDescriptorSetAccelerationStructures:                     u32,
+	maxDescriptorSetUpdateAfterBindAccelerationStructures:      u32,
+	minAccelerationStructureScratchOffsetAlignment:             u32,
+}
+
+AccelerationStructureDeviceAddressInfoKHR :: struct {
+	sType:                 StructureType,
+	pNext:                 rawptr,
+	accelerationStructure: AccelerationStructureKHR,
+}
+
+AccelerationStructureVersionInfoKHR :: struct {
+	sType:        StructureType,
+	pNext:        rawptr,
+	pVersionData: ^u8,
+}
+
+CopyAccelerationStructureToMemoryInfoKHR :: struct {
+	sType: StructureType,
+	pNext: rawptr,
+	src:   AccelerationStructureKHR,
+	dst:   DeviceOrHostAddressKHR,
+	mode:  CopyAccelerationStructureModeKHR,
+}
+
+CopyMemoryToAccelerationStructureInfoKHR :: struct {
+	sType: StructureType,
+	pNext: rawptr,
+	src:   DeviceOrHostAddressConstKHR,
+	dst:   AccelerationStructureKHR,
+	mode:  CopyAccelerationStructureModeKHR,
+}
+
+CopyAccelerationStructureInfoKHR :: struct {
+	sType: StructureType,
+	pNext: rawptr,
+	src:   AccelerationStructureKHR,
+	dst:   AccelerationStructureKHR,
+	mode:  CopyAccelerationStructureModeKHR,
+}
+
+AccelerationStructureBuildSizesInfoKHR :: struct {
+	sType:                     StructureType,
+	pNext:                     rawptr,
+	accelerationStructureSize: DeviceSize,
+	updateScratchSize:         DeviceSize,
+	buildScratchSize:          DeviceSize,
+}
+
+RayTracingShaderGroupCreateInfoKHR :: struct {
+	sType:                           StructureType,
+	pNext:                           rawptr,
+	type:                            RayTracingShaderGroupTypeKHR,
+	generalShader:                   u32,
+	closestHitShader:                u32,
+	anyHitShader:                    u32,
+	intersectionShader:              u32,
+	pShaderGroupCaptureReplayHandle: rawptr,
+}
+
+RayTracingPipelineInterfaceCreateInfoKHR :: struct {
+	sType:                          StructureType,
+	pNext:                          rawptr,
+	maxPipelineRayPayloadSize:      u32,
+	maxPipelineRayHitAttributeSize: u32,
+}
+
+RayTracingPipelineCreateInfoKHR :: struct {
+	sType:                        StructureType,
+	pNext:                        rawptr,
+	flags:                        PipelineCreateFlags,
+	stageCount:                   u32,
+	pStages:                      ^PipelineShaderStageCreateInfo,
+	groupCount:                   u32,
+	pGroups:                      ^RayTracingShaderGroupCreateInfoKHR,
+	maxPipelineRayRecursionDepth: u32,
+	pLibraryInfo:                 ^PipelineLibraryCreateInfoKHR,
+	pLibraryInterface:            ^RayTracingPipelineInterfaceCreateInfoKHR,
+	pDynamicState:                ^PipelineDynamicStateCreateInfo,
+	layout:                       PipelineLayout,
+	basePipelineHandle:           Pipeline,
+	basePipelineIndex:            i32,
+}
+
+PhysicalDeviceRayTracingPipelineFeaturesKHR :: struct {
+	sType:                                                 StructureType,
+	pNext:                                                 rawptr,
+	rayTracingPipeline:                                    b32,
+	rayTracingPipelineShaderGroupHandleCaptureReplay:      b32,
+	rayTracingPipelineShaderGroupHandleCaptureReplayMixed: b32,
+	rayTracingPipelineTraceRaysIndirect:                   b32,
+	rayTraversalPrimitiveCulling:                          b32,
+}
+
+PhysicalDeviceRayTracingPipelinePropertiesKHR :: struct {
+	sType:                              StructureType,
+	pNext:                              rawptr,
+	shaderGroupHandleSize:              u32,
+	maxRayRecursionDepth:               u32,
+	maxShaderGroupStride:               u32,
+	shaderGroupBaseAlignment:           u32,
+	shaderGroupHandleCaptureReplaySize: u32,
+	maxRayDispatchInvocationCount:      u32,
+	shaderGroupHandleAlignment:         u32,
+	maxRayHitAttributeSize:             u32,
+}
+
+StridedDeviceAddressRegionKHR :: struct {
+	deviceAddress: DeviceAddress,
+	stride:        DeviceSize,
+	size:          DeviceSize,
+}
+
+TraceRaysIndirectCommandKHR :: struct {
+	width:  u32,
+	height: u32,
+	depth:  u32,
+}
+
+PhysicalDeviceRayQueryFeaturesKHR :: struct {
+	sType:    StructureType,
+	pNext:    rawptr,
+	rayQuery: b32,
 }
 
 Win32SurfaceCreateInfoKHR :: struct {
@@ -4427,20 +4928,16 @@ PhysicalDeviceDescriptorIndexingFeaturesEXT          :: PhysicalDeviceDescriptor
 PhysicalDeviceDescriptorIndexingPropertiesEXT        :: PhysicalDeviceDescriptorIndexingProperties;
 DescriptorSetVariableDescriptorCountAllocateInfoEXT  :: DescriptorSetVariableDescriptorCountAllocateInfo;
 DescriptorSetVariableDescriptorCountLayoutSupportEXT :: DescriptorSetVariableDescriptorCountLayoutSupport;
-AccelerationStructureNV                              :: AccelerationStructureKHR;
 RayTracingShaderGroupTypeNV                          :: RayTracingShaderGroupTypeKHR;
 GeometryTypeNV                                       :: GeometryTypeKHR;
 AccelerationStructureTypeNV                          :: AccelerationStructureTypeKHR;
 CopyAccelerationStructureModeNV                      :: CopyAccelerationStructureModeKHR;
-AccelerationStructureMemoryRequirementsTypeNV        :: AccelerationStructureMemoryRequirementsTypeKHR;
 GeometryFlagsNV                                      :: GeometryFlagsKHR;
 GeometryFlagNV                                       :: GeometryFlagKHR;
 GeometryInstanceFlagsNV                              :: GeometryInstanceFlagsKHR;
 GeometryInstanceFlagNV                               :: GeometryInstanceFlagKHR;
 BuildAccelerationStructureFlagsNV                    :: BuildAccelerationStructureFlagsKHR;
 BuildAccelerationStructureFlagNV                     :: BuildAccelerationStructureFlagKHR;
-BindAccelerationStructureMemoryInfoNV                :: BindAccelerationStructureMemoryInfoKHR;
-WriteDescriptorSetAccelerationStructureNV            :: WriteDescriptorSetAccelerationStructureKHR;
 TransformMatrixNV                                    :: TransformMatrixKHR;
 AabbPositionsNV                                      :: AabbPositionsKHR;
 AccelerationStructureInstanceNV                      :: AccelerationStructureInstanceKHR;

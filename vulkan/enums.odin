@@ -37,7 +37,6 @@ Result :: enum c.int {
 	ERROR_INCOMPATIBLE_DISPLAY_KHR                     = -1000003001,
 	ERROR_VALIDATION_FAILED_EXT                        = -1000011001,
 	ERROR_INVALID_SHADER_NV                            = -1000012000,
-	ERROR_INCOMPATIBLE_VERSION_KHR                     = -1000150000,
 	ERROR_INVALID_DRM_FORMAT_MODIFIER_PLANE_LAYOUT_EXT = -1000158000,
 	ERROR_NOT_PERMITTED_EXT                            = -1000174001,
 	ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT          = -1000255000,
@@ -343,37 +342,39 @@ StructureType :: enum c.int {
 	PHYSICAL_DEVICE_BLEND_OPERATION_ADVANCED_PROPERTIES_EXT         = 1000148001,
 	PIPELINE_COLOR_BLEND_ADVANCED_STATE_CREATE_INFO_EXT             = 1000148002,
 	PIPELINE_COVERAGE_TO_COLOR_STATE_CREATE_INFO_NV                 = 1000149000,
-	BIND_ACCELERATION_STRUCTURE_MEMORY_INFO_KHR                     = 1000165006,
-	WRITE_DESCRIPTOR_SET_ACCELERATION_STRUCTURE_KHR                 = 1000165007,
+	WRITE_DESCRIPTOR_SET_ACCELERATION_STRUCTURE_KHR                 = 1000150007,
 	ACCELERATION_STRUCTURE_BUILD_GEOMETRY_INFO_KHR                  = 1000150000,
-	ACCELERATION_STRUCTURE_CREATE_GEOMETRY_TYPE_INFO_KHR            = 1000150001,
 	ACCELERATION_STRUCTURE_DEVICE_ADDRESS_INFO_KHR                  = 1000150002,
 	ACCELERATION_STRUCTURE_GEOMETRY_AABBS_DATA_KHR                  = 1000150003,
 	ACCELERATION_STRUCTURE_GEOMETRY_INSTANCES_DATA_KHR              = 1000150004,
 	ACCELERATION_STRUCTURE_GEOMETRY_TRIANGLES_DATA_KHR              = 1000150005,
 	ACCELERATION_STRUCTURE_GEOMETRY_KHR                             = 1000150006,
-	ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_INFO_KHR             = 1000150008,
-	ACCELERATION_STRUCTURE_VERSION_KHR                              = 1000150009,
+	ACCELERATION_STRUCTURE_VERSION_INFO_KHR                         = 1000150009,
 	COPY_ACCELERATION_STRUCTURE_INFO_KHR                            = 1000150010,
 	COPY_ACCELERATION_STRUCTURE_TO_MEMORY_INFO_KHR                  = 1000150011,
 	COPY_MEMORY_TO_ACCELERATION_STRUCTURE_INFO_KHR                  = 1000150012,
-	PHYSICAL_DEVICE_RAY_TRACING_FEATURES_KHR                        = 1000150013,
-	PHYSICAL_DEVICE_RAY_TRACING_PROPERTIES_KHR                      = 1000150014,
+	PHYSICAL_DEVICE_ACCELERATION_STRUCTURE_FEATURES_KHR             = 1000150013,
+	PHYSICAL_DEVICE_ACCELERATION_STRUCTURE_PROPERTIES_KHR           = 1000150014,
+	ACCELERATION_STRUCTURE_CREATE_INFO_KHR                          = 1000150017,
+	ACCELERATION_STRUCTURE_BUILD_SIZES_INFO_KHR                     = 1000150020,
+	PHYSICAL_DEVICE_RAY_TRACING_PIPELINE_FEATURES_KHR               = 1000347000,
+	PHYSICAL_DEVICE_RAY_TRACING_PIPELINE_PROPERTIES_KHR             = 1000347001,
 	RAY_TRACING_PIPELINE_CREATE_INFO_KHR                            = 1000150015,
 	RAY_TRACING_SHADER_GROUP_CREATE_INFO_KHR                        = 1000150016,
-	ACCELERATION_STRUCTURE_CREATE_INFO_KHR                          = 1000150017,
 	RAY_TRACING_PIPELINE_INTERFACE_CREATE_INFO_KHR                  = 1000150018,
+	PHYSICAL_DEVICE_RAY_QUERY_FEATURES_KHR                          = 1000348013,
 	PIPELINE_COVERAGE_MODULATION_STATE_CREATE_INFO_NV               = 1000152000,
 	PHYSICAL_DEVICE_SHADER_SM_BUILTINS_FEATURES_NV                  = 1000154000,
 	PHYSICAL_DEVICE_SHADER_SM_BUILTINS_PROPERTIES_NV                = 1000154001,
 	DRM_FORMAT_MODIFIER_PROPERTIES_LIST_EXT                         = 1000158000,
-	DRM_FORMAT_MODIFIER_PROPERTIES_EXT                              = 1000158001,
 	PHYSICAL_DEVICE_IMAGE_DRM_FORMAT_MODIFIER_INFO_EXT              = 1000158002,
 	IMAGE_DRM_FORMAT_MODIFIER_LIST_CREATE_INFO_EXT                  = 1000158003,
 	IMAGE_DRM_FORMAT_MODIFIER_EXPLICIT_CREATE_INFO_EXT              = 1000158004,
 	IMAGE_DRM_FORMAT_MODIFIER_PROPERTIES_EXT                        = 1000158005,
 	VALIDATION_CACHE_CREATE_INFO_EXT                                = 1000160000,
 	SHADER_MODULE_VALIDATION_CACHE_CREATE_INFO_EXT                  = 1000160001,
+	PHYSICAL_DEVICE_PORTABILITY_SUBSET_FEATURES_KHR                 = 1000163000,
+	PHYSICAL_DEVICE_PORTABILITY_SUBSET_PROPERTIES_KHR               = 1000163001,
 	PIPELINE_VIEWPORT_SHADING_RATE_IMAGE_STATE_CREATE_INFO_NV       = 1000164000,
 	PHYSICAL_DEVICE_SHADING_RATE_IMAGE_FEATURES_NV                  = 1000164001,
 	PHYSICAL_DEVICE_SHADING_RATE_IMAGE_PROPERTIES_NV                = 1000164002,
@@ -383,6 +384,8 @@ StructureType :: enum c.int {
 	GEOMETRY_NV                                                     = 1000165003,
 	GEOMETRY_TRIANGLES_NV                                           = 1000165004,
 	GEOMETRY_AABB_NV                                                = 1000165005,
+	BIND_ACCELERATION_STRUCTURE_MEMORY_INFO_NV                      = 1000165006,
+	WRITE_DESCRIPTOR_SET_ACCELERATION_STRUCTURE_NV                  = 1000165007,
 	ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_INFO_NV              = 1000165008,
 	PHYSICAL_DEVICE_RAY_TRACING_PROPERTIES_NV                       = 1000165009,
 	RAY_TRACING_SHADER_GROUP_CREATE_INFO_NV                         = 1000165011,
@@ -425,6 +428,7 @@ StructureType :: enum c.int {
 	DISPLAY_NATIVE_HDR_SURFACE_CAPABILITIES_AMD                     = 1000213000,
 	SWAPCHAIN_DISPLAY_NATIVE_HDR_CREATE_INFO_AMD                    = 1000213001,
 	IMAGEPIPE_SURFACE_CREATE_INFO_FUCHSIA                           = 1000214000,
+	PHYSICAL_DEVICE_SHADER_TERMINATE_INVOCATION_FEATURES_KHR        = 1000215000,
 	METAL_SURFACE_CREATE_INFO_EXT                                   = 1000217000,
 	PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_FEATURES_EXT               = 1000218000,
 	PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_PROPERTIES_EXT             = 1000218001,
@@ -432,8 +436,14 @@ StructureType :: enum c.int {
 	PHYSICAL_DEVICE_SUBGROUP_SIZE_CONTROL_PROPERTIES_EXT            = 1000225000,
 	PIPELINE_SHADER_STAGE_REQUIRED_SUBGROUP_SIZE_CREATE_INFO_EXT    = 1000225001,
 	PHYSICAL_DEVICE_SUBGROUP_SIZE_CONTROL_FEATURES_EXT              = 1000225002,
+	FRAGMENT_SHADING_RATE_ATTACHMENT_INFO_KHR                       = 1000226000,
+	PIPELINE_FRAGMENT_SHADING_RATE_STATE_CREATE_INFO_KHR            = 1000226001,
+	PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_PROPERTIES_KHR            = 1000226002,
+	PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_FEATURES_KHR              = 1000226003,
+	PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_KHR                       = 1000226004,
 	PHYSICAL_DEVICE_SHADER_CORE_PROPERTIES_2_AMD                    = 1000227000,
 	PHYSICAL_DEVICE_COHERENT_MEMORY_FEATURES_AMD                    = 1000229000,
+	PHYSICAL_DEVICE_SHADER_IMAGE_ATOMIC_INT64_FEATURES_EXT          = 1000234000,
 	PHYSICAL_DEVICE_MEMORY_BUDGET_PROPERTIES_EXT                    = 1000237000,
 	PHYSICAL_DEVICE_MEMORY_PRIORITY_FEATURES_EXT                    = 1000238000,
 	MEMORY_PRIORITY_ALLOCATE_INFO_EXT                               = 1000238001,
@@ -461,7 +471,6 @@ StructureType :: enum c.int {
 	PHYSICAL_DEVICE_SHADER_ATOMIC_FLOAT_FEATURES_EXT                = 1000260000,
 	PHYSICAL_DEVICE_INDEX_TYPE_UINT8_FEATURES_EXT                   = 1000265000,
 	PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_FEATURES_EXT             = 1000267000,
-	DEFERRED_OPERATION_INFO_KHR                                     = 1000268000,
 	PHYSICAL_DEVICE_PIPELINE_EXECUTABLE_PROPERTIES_FEATURES_KHR     = 1000269000,
 	PIPELINE_INFO_KHR                                               = 1000269001,
 	PIPELINE_EXECUTABLE_PROPERTIES_KHR                              = 1000269002,
@@ -481,6 +490,9 @@ StructureType :: enum c.int {
 	PHYSICAL_DEVICE_TEXEL_BUFFER_ALIGNMENT_PROPERTIES_EXT           = 1000281001,
 	COMMAND_BUFFER_INHERITANCE_RENDER_PASS_TRANSFORM_INFO_QCOM      = 1000282000,
 	RENDER_PASS_TRANSFORM_BEGIN_INFO_QCOM                           = 1000282001,
+	PHYSICAL_DEVICE_DEVICE_MEMORY_REPORT_FEATURES_EXT               = 1000284000,
+	DEVICE_DEVICE_MEMORY_REPORT_CREATE_INFO_EXT                     = 1000284001,
+	DEVICE_MEMORY_REPORT_CALLBACK_DATA_EXT                          = 1000284002,
 	PHYSICAL_DEVICE_ROBUSTNESS_2_FEATURES_EXT                       = 1000286000,
 	PHYSICAL_DEVICE_ROBUSTNESS_2_PROPERTIES_EXT                     = 1000286001,
 	SAMPLER_CUSTOM_BORDER_COLOR_CREATE_INFO_EXT                     = 1000287000,
@@ -493,11 +505,30 @@ StructureType :: enum c.int {
 	PHYSICAL_DEVICE_PIPELINE_CREATION_CACHE_CONTROL_FEATURES_EXT    = 1000297000,
 	PHYSICAL_DEVICE_DIAGNOSTICS_CONFIG_FEATURES_NV                  = 1000300000,
 	DEVICE_DIAGNOSTICS_CONFIG_CREATE_INFO_NV                        = 1000300001,
+	PHYSICAL_DEVICE_ZERO_INITIALIZE_WORKGROUP_MEMORY_FEATURES_KHR   = 1000325000,
+	PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_ENUMS_PROPERTIES_NV       = 1000326000,
+	PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_ENUMS_FEATURES_NV         = 1000326001,
+	PIPELINE_FRAGMENT_SHADING_RATE_ENUM_STATE_CREATE_INFO_NV        = 1000326002,
 	PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_2_FEATURES_EXT             = 1000332000,
 	PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_2_PROPERTIES_EXT           = 1000332001,
+	COPY_COMMAND_TRANSFORM_INFO_QCOM                                = 1000333000,
 	PHYSICAL_DEVICE_IMAGE_ROBUSTNESS_FEATURES_EXT                   = 1000335000,
+	PHYSICAL_DEVICE_WORKGROUP_MEMORY_EXPLICIT_LAYOUT_FEATURES_KHR   = 1000336000,
+	COPY_BUFFER_INFO_2_KHR                                          = 1000337000,
+	COPY_IMAGE_INFO_2_KHR                                           = 1000337001,
+	COPY_BUFFER_TO_IMAGE_INFO_2_KHR                                 = 1000337002,
+	COPY_IMAGE_TO_BUFFER_INFO_2_KHR                                 = 1000337003,
+	BLIT_IMAGE_INFO_2_KHR                                           = 1000337004,
+	RESOLVE_IMAGE_INFO_2_KHR                                        = 1000337005,
+	BUFFER_COPY_2_KHR                                               = 1000337006,
+	IMAGE_COPY_2_KHR                                                = 1000337007,
+	IMAGE_BLIT_2_KHR                                                = 1000337008,
+	BUFFER_IMAGE_COPY_2_KHR                                         = 1000337009,
+	IMAGE_RESOLVE_2_KHR                                             = 1000337010,
 	PHYSICAL_DEVICE_4444_FORMATS_FEATURES_EXT                       = 1000340000,
 	DIRECTFB_SURFACE_CREATE_INFO_EXT                                = 1000346000,
+	PHYSICAL_DEVICE_MUTABLE_DESCRIPTOR_TYPE_FEATURES_VALVE          = 1000351000,
+	MUTABLE_DESCRIPTOR_TYPE_CREATE_INFO_VALVE                       = 1000351002,
 	PHYSICAL_DEVICE_VARIABLE_POINTER_FEATURES                       = PHYSICAL_DEVICE_VARIABLE_POINTERS_FEATURES,
 	PHYSICAL_DEVICE_SHADER_DRAW_PARAMETER_FEATURES                  = PHYSICAL_DEVICE_SHADER_DRAW_PARAMETERS_FEATURES,
 	DEBUG_REPORT_CREATE_INFO_EXT                                    = DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT,
@@ -581,8 +612,6 @@ StructureType :: enum c.int {
 	PHYSICAL_DEVICE_DESCRIPTOR_INDEXING_PROPERTIES_EXT              = PHYSICAL_DEVICE_DESCRIPTOR_INDEXING_PROPERTIES,
 	DESCRIPTOR_SET_VARIABLE_DESCRIPTOR_COUNT_ALLOCATE_INFO_EXT      = DESCRIPTOR_SET_VARIABLE_DESCRIPTOR_COUNT_ALLOCATE_INFO,
 	DESCRIPTOR_SET_VARIABLE_DESCRIPTOR_COUNT_LAYOUT_SUPPORT_EXT     = DESCRIPTOR_SET_VARIABLE_DESCRIPTOR_COUNT_LAYOUT_SUPPORT,
-	BIND_ACCELERATION_STRUCTURE_MEMORY_INFO_NV                      = BIND_ACCELERATION_STRUCTURE_MEMORY_INFO_KHR,
-	WRITE_DESCRIPTOR_SET_ACCELERATION_STRUCTURE_NV                  = WRITE_DESCRIPTOR_SET_ACCELERATION_STRUCTURE_KHR,
 	PHYSICAL_DEVICE_MAINTENANCE_3_PROPERTIES_KHR                    = PHYSICAL_DEVICE_MAINTENANCE_3_PROPERTIES,
 	DESCRIPTOR_SET_LAYOUT_SUPPORT_KHR                               = DESCRIPTOR_SET_LAYOUT_SUPPORT,
 	PHYSICAL_DEVICE_SHADER_SUBGROUP_EXTENDED_TYPES_FEATURES_KHR     = PHYSICAL_DEVICE_SHADER_SUBGROUP_EXTENDED_TYPES_FEATURES,
@@ -638,6 +667,7 @@ ImageLayout :: enum c.int {
 	FRAGMENT_DENSITY_MAP_OPTIMAL_EXT               = 1000218000,
 	DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL_KHR = DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL,
 	DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL_KHR = DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL,
+	FRAGMENT_SHADING_RATE_ATTACHMENT_OPTIMAL_KHR   = SHADING_RATE_OPTIMAL_NV,
 	DEPTH_ATTACHMENT_OPTIMAL_KHR                   = DEPTH_ATTACHMENT_OPTIMAL,
 	DEPTH_READ_ONLY_OPTIMAL_KHR                    = DEPTH_READ_ONLY_OPTIMAL,
 	STENCIL_ATTACHMENT_OPTIMAL_KHR                 = STENCIL_ATTACHMENT_OPTIMAL,
@@ -679,15 +709,15 @@ ObjectType :: enum c.int {
 	DISPLAY_MODE_KHR                = 1000002001,
 	DEBUG_REPORT_CALLBACK_EXT       = 1000011000,
 	DEBUG_UTILS_MESSENGER_EXT       = 1000128000,
-	ACCELERATION_STRUCTURE_KHR      = 1000165000,
+	ACCELERATION_STRUCTURE_KHR      = 1000150000,
 	VALIDATION_CACHE_EXT            = 1000160000,
+	ACCELERATION_STRUCTURE_NV       = 1000165000,
 	PERFORMANCE_CONFIGURATION_INTEL = 1000210000,
 	DEFERRED_OPERATION_KHR          = 1000268000,
 	INDIRECT_COMMANDS_LAYOUT_NV     = 1000277000,
 	PRIVATE_DATA_SLOT_EXT           = 1000295000,
 	DESCRIPTOR_UPDATE_TEMPLATE_KHR  = DESCRIPTOR_UPDATE_TEMPLATE,
 	SAMPLER_YCBCR_CONVERSION_KHR    = SAMPLER_YCBCR_CONVERSION,
-	ACCELERATION_STRUCTURE_NV       = ACCELERATION_STRUCTURE_KHR,
 }
 
 VendorId :: enum c.int {
@@ -696,6 +726,7 @@ VendorId :: enum c.int {
 	KAZAN    = 0x10003,
 	CODEPLAY = 0x10004,
 	MESA     = 0x10005,
+	POCL     = 0x10006,
 }
 
 PipelineCacheHeaderVersion :: enum c.int {
@@ -1020,10 +1051,10 @@ QueryType :: enum c.int {
 	TIMESTAMP                                     = 2,
 	TRANSFORM_FEEDBACK_STREAM_EXT                 = 1000028004,
 	PERFORMANCE_QUERY_KHR                         = 1000116000,
-	ACCELERATION_STRUCTURE_COMPACTED_SIZE_KHR     = 1000165000,
-	ACCELERATION_STRUCTURE_SERIALIZATION_SIZE_KHR = 1000150000,
+	ACCELERATION_STRUCTURE_COMPACTED_SIZE_KHR     = 1000150000,
+	ACCELERATION_STRUCTURE_SERIALIZATION_SIZE_KHR = 1000150001,
+	ACCELERATION_STRUCTURE_COMPACTED_SIZE_NV      = 1000165000,
 	PERFORMANCE_QUERY_INTEL                       = 1000210000,
-	ACCELERATION_STRUCTURE_COMPACTED_SIZE_NV      = ACCELERATION_STRUCTURE_COMPACTED_SIZE_KHR,
 }
 
 SharingMode :: enum c.int {
@@ -1139,34 +1170,36 @@ CompareOp :: enum c.int {
 }
 
 DynamicState :: enum c.int {
-	VIEWPORT                         = 0,
-	SCISSOR                          = 1,
-	LINE_WIDTH                       = 2,
-	DEPTH_BIAS                       = 3,
-	BLEND_CONSTANTS                  = 4,
-	DEPTH_BOUNDS                     = 5,
-	STENCIL_COMPARE_MASK             = 6,
-	STENCIL_WRITE_MASK               = 7,
-	STENCIL_REFERENCE                = 8,
-	VIEWPORT_W_SCALING_NV            = 1000087000,
-	DISCARD_RECTANGLE_EXT            = 1000099000,
-	SAMPLE_LOCATIONS_EXT             = 1000143000,
-	VIEWPORT_SHADING_RATE_PALETTE_NV = 1000164004,
-	VIEWPORT_COARSE_SAMPLE_ORDER_NV  = 1000164006,
-	EXCLUSIVE_SCISSOR_NV             = 1000205001,
-	LINE_STIPPLE_EXT                 = 1000259000,
-	CULL_MODE_EXT                    = 1000267000,
-	FRONT_FACE_EXT                   = 1000267001,
-	PRIMITIVE_TOPOLOGY_EXT           = 1000267002,
-	VIEWPORT_WITH_COUNT_EXT          = 1000267003,
-	SCISSOR_WITH_COUNT_EXT           = 1000267004,
-	VERTEX_INPUT_BINDING_STRIDE_EXT  = 1000267005,
-	DEPTH_TEST_ENABLE_EXT            = 1000267006,
-	DEPTH_WRITE_ENABLE_EXT           = 1000267007,
-	DEPTH_COMPARE_OP_EXT             = 1000267008,
-	DEPTH_BOUNDS_TEST_ENABLE_EXT     = 1000267009,
-	STENCIL_TEST_ENABLE_EXT          = 1000267010,
-	STENCIL_OP_EXT                   = 1000267011,
+	VIEWPORT                            = 0,
+	SCISSOR                             = 1,
+	LINE_WIDTH                          = 2,
+	DEPTH_BIAS                          = 3,
+	BLEND_CONSTANTS                     = 4,
+	DEPTH_BOUNDS                        = 5,
+	STENCIL_COMPARE_MASK                = 6,
+	STENCIL_WRITE_MASK                  = 7,
+	STENCIL_REFERENCE                   = 8,
+	VIEWPORT_W_SCALING_NV               = 1000087000,
+	DISCARD_RECTANGLE_EXT               = 1000099000,
+	SAMPLE_LOCATIONS_EXT                = 1000143000,
+	RAY_TRACING_PIPELINE_STACK_SIZE_KHR = 1000347000,
+	VIEWPORT_SHADING_RATE_PALETTE_NV    = 1000164004,
+	VIEWPORT_COARSE_SAMPLE_ORDER_NV     = 1000164006,
+	EXCLUSIVE_SCISSOR_NV                = 1000205001,
+	FRAGMENT_SHADING_RATE_KHR           = 1000226000,
+	LINE_STIPPLE_EXT                    = 1000259000,
+	CULL_MODE_EXT                       = 1000267000,
+	FRONT_FACE_EXT                      = 1000267001,
+	PRIMITIVE_TOPOLOGY_EXT              = 1000267002,
+	VIEWPORT_WITH_COUNT_EXT             = 1000267003,
+	SCISSOR_WITH_COUNT_EXT              = 1000267004,
+	VERTEX_INPUT_BINDING_STRIDE_EXT     = 1000267005,
+	DEPTH_TEST_ENABLE_EXT               = 1000267006,
+	DEPTH_WRITE_ENABLE_EXT              = 1000267007,
+	DEPTH_COMPARE_OP_EXT                = 1000267008,
+	DEPTH_BOUNDS_TEST_ENABLE_EXT        = 1000267009,
+	STENCIL_TEST_ENABLE_EXT             = 1000267010,
+	STENCIL_OP_EXT                      = 1000267011,
 }
 
 FrontFace :: enum c.int {
@@ -1275,8 +1308,9 @@ DescriptorType :: enum c.int {
 	STORAGE_BUFFER_DYNAMIC     = 9,
 	INPUT_ATTACHMENT           = 10,
 	INLINE_UNIFORM_BLOCK_EXT   = 1000138000,
-	ACCELERATION_STRUCTURE_KHR = 1000165000,
-	ACCELERATION_STRUCTURE_NV  = ACCELERATION_STRUCTURE_KHR,
+	ACCELERATION_STRUCTURE_KHR = 1000150000,
+	ACCELERATION_STRUCTURE_NV  = 1000165000,
+	MUTABLE_VALVE              = 1000351000,
 }
 
 AttachmentLoadOp :: enum c.int {
@@ -1318,36 +1352,37 @@ SubpassContents :: enum c.int {
 
 AccessFlags :: distinct bit_set[AccessFlag; Flags];
 AccessFlag :: enum Flags {
-	INDIRECT_COMMAND_READ                 = 0,
-	INDEX_READ                            = 1,
-	VERTEX_ATTRIBUTE_READ                 = 2,
-	UNIFORM_READ                          = 3,
-	INPUT_ATTACHMENT_READ                 = 4,
-	SHADER_READ                           = 5,
-	SHADER_WRITE                          = 6,
-	COLOR_ATTACHMENT_READ                 = 7,
-	COLOR_ATTACHMENT_WRITE                = 8,
-	DEPTH_STENCIL_ATTACHMENT_READ         = 9,
-	DEPTH_STENCIL_ATTACHMENT_WRITE        = 10,
-	TRANSFER_READ                         = 11,
-	TRANSFER_WRITE                        = 12,
-	HOST_READ                             = 13,
-	HOST_WRITE                            = 14,
-	MEMORY_READ                           = 15,
-	MEMORY_WRITE                          = 16,
-	TRANSFORM_FEEDBACK_WRITE_EXT          = 25,
-	TRANSFORM_FEEDBACK_COUNTER_READ_EXT   = 26,
-	TRANSFORM_FEEDBACK_COUNTER_WRITE_EXT  = 27,
-	CONDITIONAL_RENDERING_READ_EXT        = 20,
-	COLOR_ATTACHMENT_READ_NONCOHERENT_EXT = 19,
-	ACCELERATION_STRUCTURE_READ_KHR       = 21,
-	ACCELERATION_STRUCTURE_WRITE_KHR      = 22,
-	SHADING_RATE_IMAGE_READ_NV            = 23,
-	FRAGMENT_DENSITY_MAP_READ_EXT         = 24,
-	COMMAND_PREPROCESS_READ_NV            = 17,
-	COMMAND_PREPROCESS_WRITE_NV           = 18,
-	ACCELERATION_STRUCTURE_READ_NV        = ACCELERATION_STRUCTURE_READ_KHR,
-	ACCELERATION_STRUCTURE_WRITE_NV       = ACCELERATION_STRUCTURE_WRITE_KHR,
+	INDIRECT_COMMAND_READ                     = 0,
+	INDEX_READ                                = 1,
+	VERTEX_ATTRIBUTE_READ                     = 2,
+	UNIFORM_READ                              = 3,
+	INPUT_ATTACHMENT_READ                     = 4,
+	SHADER_READ                               = 5,
+	SHADER_WRITE                              = 6,
+	COLOR_ATTACHMENT_READ                     = 7,
+	COLOR_ATTACHMENT_WRITE                    = 8,
+	DEPTH_STENCIL_ATTACHMENT_READ             = 9,
+	DEPTH_STENCIL_ATTACHMENT_WRITE            = 10,
+	TRANSFER_READ                             = 11,
+	TRANSFER_WRITE                            = 12,
+	HOST_READ                                 = 13,
+	HOST_WRITE                                = 14,
+	MEMORY_READ                               = 15,
+	MEMORY_WRITE                              = 16,
+	TRANSFORM_FEEDBACK_WRITE_EXT              = 25,
+	TRANSFORM_FEEDBACK_COUNTER_READ_EXT       = 26,
+	TRANSFORM_FEEDBACK_COUNTER_WRITE_EXT      = 27,
+	CONDITIONAL_RENDERING_READ_EXT            = 20,
+	COLOR_ATTACHMENT_READ_NONCOHERENT_EXT     = 19,
+	ACCELERATION_STRUCTURE_READ_KHR           = 21,
+	ACCELERATION_STRUCTURE_WRITE_KHR          = 22,
+	SHADING_RATE_IMAGE_READ_NV                = 23,
+	FRAGMENT_DENSITY_MAP_READ_EXT             = 24,
+	COMMAND_PREPROCESS_READ_NV                = 17,
+	COMMAND_PREPROCESS_WRITE_NV               = 18,
+	ACCELERATION_STRUCTURE_READ_NV            = ACCELERATION_STRUCTURE_READ_KHR,
+	ACCELERATION_STRUCTURE_WRITE_NV           = ACCELERATION_STRUCTURE_WRITE_KHR,
+	FRAGMENT_SHADING_RATE_ATTACHMENT_READ_KHR = SHADING_RATE_IMAGE_READ_NV,
 }
 
 ImageAspectFlags :: distinct bit_set[ImageAspectFlag; Flags];
@@ -1396,6 +1431,7 @@ FormatFeatureFlag :: enum Flags {
 	SAMPLED_IMAGE_FILTER_CUBIC_IMG                                              = 13,
 	ACCELERATION_STRUCTURE_VERTEX_BUFFER_KHR                                    = 29,
 	FRAGMENT_DENSITY_MAP_EXT                                                    = 24,
+	FRAGMENT_SHADING_RATE_ATTACHMENT_KHR                                        = 30,
 	TRANSFER_SRC_KHR                                                            = TRANSFER_SRC,
 	TRANSFER_DST_KHR                                                            = TRANSFER_DST,
 	SAMPLED_IMAGE_FILTER_MINMAX_EXT                                             = SAMPLED_IMAGE_FILTER_MINMAX,
@@ -1447,16 +1483,17 @@ SampleCountFlag :: enum Flags {
 
 ImageUsageFlags :: distinct bit_set[ImageUsageFlag; Flags];
 ImageUsageFlag :: enum Flags {
-	TRANSFER_SRC             = 0,
-	TRANSFER_DST             = 1,
-	SAMPLED                  = 2,
-	STORAGE                  = 3,
-	COLOR_ATTACHMENT         = 4,
-	DEPTH_STENCIL_ATTACHMENT = 5,
-	TRANSIENT_ATTACHMENT     = 6,
-	INPUT_ATTACHMENT         = 7,
-	SHADING_RATE_IMAGE_NV    = 8,
-	FRAGMENT_DENSITY_MAP_EXT = 9,
+	TRANSFER_SRC                         = 0,
+	TRANSFER_DST                         = 1,
+	SAMPLED                              = 2,
+	STORAGE                              = 3,
+	COLOR_ATTACHMENT                     = 4,
+	DEPTH_STENCIL_ATTACHMENT             = 5,
+	TRANSIENT_ATTACHMENT                 = 6,
+	INPUT_ATTACHMENT                     = 7,
+	SHADING_RATE_IMAGE_NV                = 8,
+	FRAGMENT_DENSITY_MAP_EXT             = 9,
+	FRAGMENT_SHADING_RATE_ATTACHMENT_KHR = SHADING_RATE_IMAGE_NV,
 }
 
 MemoryHeapFlags :: distinct bit_set[MemoryHeapFlag; Flags];
@@ -1494,34 +1531,35 @@ DeviceQueueCreateFlag :: enum Flags {
 
 PipelineStageFlags :: distinct bit_set[PipelineStageFlag; Flags];
 PipelineStageFlag :: enum Flags {
-	TOP_OF_PIPE                      = 0,
-	DRAW_INDIRECT                    = 1,
-	VERTEX_INPUT                     = 2,
-	VERTEX_SHADER                    = 3,
-	TESSELLATION_CONTROL_SHADER      = 4,
-	TESSELLATION_EVALUATION_SHADER   = 5,
-	GEOMETRY_SHADER                  = 6,
-	FRAGMENT_SHADER                  = 7,
-	EARLY_FRAGMENT_TESTS             = 8,
-	LATE_FRAGMENT_TESTS              = 9,
-	COLOR_ATTACHMENT_OUTPUT          = 10,
-	COMPUTE_SHADER                   = 11,
-	TRANSFER                         = 12,
-	BOTTOM_OF_PIPE                   = 13,
-	HOST                             = 14,
-	ALL_GRAPHICS                     = 15,
-	ALL_COMMANDS                     = 16,
-	TRANSFORM_FEEDBACK_EXT           = 24,
-	CONDITIONAL_RENDERING_EXT        = 18,
-	RAY_TRACING_SHADER_KHR           = 21,
-	ACCELERATION_STRUCTURE_BUILD_KHR = 25,
-	SHADING_RATE_IMAGE_NV            = 22,
-	TASK_SHADER_NV                   = 19,
-	MESH_SHADER_NV                   = 20,
-	FRAGMENT_DENSITY_PROCESS_EXT     = 23,
-	COMMAND_PREPROCESS_NV            = 17,
-	RAY_TRACING_SHADER_NV            = RAY_TRACING_SHADER_KHR,
-	ACCELERATION_STRUCTURE_BUILD_NV  = ACCELERATION_STRUCTURE_BUILD_KHR,
+	TOP_OF_PIPE                          = 0,
+	DRAW_INDIRECT                        = 1,
+	VERTEX_INPUT                         = 2,
+	VERTEX_SHADER                        = 3,
+	TESSELLATION_CONTROL_SHADER          = 4,
+	TESSELLATION_EVALUATION_SHADER       = 5,
+	GEOMETRY_SHADER                      = 6,
+	FRAGMENT_SHADER                      = 7,
+	EARLY_FRAGMENT_TESTS                 = 8,
+	LATE_FRAGMENT_TESTS                  = 9,
+	COLOR_ATTACHMENT_OUTPUT              = 10,
+	COMPUTE_SHADER                       = 11,
+	TRANSFER                             = 12,
+	BOTTOM_OF_PIPE                       = 13,
+	HOST                                 = 14,
+	ALL_GRAPHICS                         = 15,
+	ALL_COMMANDS                         = 16,
+	TRANSFORM_FEEDBACK_EXT               = 24,
+	CONDITIONAL_RENDERING_EXT            = 18,
+	ACCELERATION_STRUCTURE_BUILD_KHR     = 25,
+	RAY_TRACING_SHADER_KHR               = 21,
+	SHADING_RATE_IMAGE_NV                = 22,
+	TASK_SHADER_NV                       = 19,
+	MESH_SHADER_NV                       = 20,
+	FRAGMENT_DENSITY_PROCESS_EXT         = 23,
+	COMMAND_PREPROCESS_NV                = 17,
+	RAY_TRACING_SHADER_NV                = RAY_TRACING_SHADER_KHR,
+	ACCELERATION_STRUCTURE_BUILD_NV      = ACCELERATION_STRUCTURE_BUILD_KHR,
+	FRAGMENT_SHADING_RATE_ATTACHMENT_KHR = SHADING_RATE_IMAGE_NV,
 }
 
 SparseMemoryBindFlags :: distinct bit_set[SparseMemoryBindFlag; Flags];
@@ -1577,23 +1615,25 @@ BufferCreateFlag :: enum Flags {
 
 BufferUsageFlags :: distinct bit_set[BufferUsageFlag; Flags];
 BufferUsageFlag :: enum Flags {
-	TRANSFER_SRC                          = 0,
-	TRANSFER_DST                          = 1,
-	UNIFORM_TEXEL_BUFFER                  = 2,
-	STORAGE_TEXEL_BUFFER                  = 3,
-	UNIFORM_BUFFER                        = 4,
-	STORAGE_BUFFER                        = 5,
-	INDEX_BUFFER                          = 6,
-	VERTEX_BUFFER                         = 7,
-	INDIRECT_BUFFER                       = 8,
-	SHADER_DEVICE_ADDRESS                 = 17,
-	TRANSFORM_FEEDBACK_BUFFER_EXT         = 11,
-	TRANSFORM_FEEDBACK_COUNTER_BUFFER_EXT = 12,
-	CONDITIONAL_RENDERING_EXT             = 9,
-	RAY_TRACING_KHR                       = 10,
-	RAY_TRACING_NV                        = RAY_TRACING_KHR,
-	SHADER_DEVICE_ADDRESS_EXT             = SHADER_DEVICE_ADDRESS,
-	SHADER_DEVICE_ADDRESS_KHR             = SHADER_DEVICE_ADDRESS,
+	TRANSFER_SRC                                     = 0,
+	TRANSFER_DST                                     = 1,
+	UNIFORM_TEXEL_BUFFER                             = 2,
+	STORAGE_TEXEL_BUFFER                             = 3,
+	UNIFORM_BUFFER                                   = 4,
+	STORAGE_BUFFER                                   = 5,
+	INDEX_BUFFER                                     = 6,
+	VERTEX_BUFFER                                    = 7,
+	INDIRECT_BUFFER                                  = 8,
+	SHADER_DEVICE_ADDRESS                            = 17,
+	TRANSFORM_FEEDBACK_BUFFER_EXT                    = 11,
+	TRANSFORM_FEEDBACK_COUNTER_BUFFER_EXT            = 12,
+	CONDITIONAL_RENDERING_EXT                        = 9,
+	ACCELERATION_STRUCTURE_BUILD_INPUT_READ_ONLY_KHR = 19,
+	ACCELERATION_STRUCTURE_STORAGE_KHR               = 20,
+	SHADER_BINDING_TABLE_KHR                         = 10,
+	RAY_TRACING_NV                                   = SHADER_BINDING_TABLE_KHR,
+	SHADER_DEVICE_ADDRESS_EXT                        = SHADER_DEVICE_ADDRESS,
+	SHADER_DEVICE_ADDRESS_KHR                        = SHADER_DEVICE_ADDRESS,
 }
 
 ImageViewCreateFlags :: distinct bit_set[ImageViewCreateFlag; Flags];
@@ -1621,26 +1661,27 @@ ColorComponentFlag :: enum Flags {
 
 PipelineCreateFlags :: distinct bit_set[PipelineCreateFlag; Flags];
 PipelineCreateFlag :: enum Flags {
-	DISABLE_OPTIMIZATION                         = 0,
-	ALLOW_DERIVATIVES                            = 1,
-	DERIVATIVE                                   = 2,
-	VIEW_INDEX_FROM_DEVICE_INDEX                 = 3,
-	DISPATCH_BASE                                = 4,
-	RAY_TRACING_NO_NULL_ANY_HIT_SHADERS_KHR      = 14,
-	RAY_TRACING_NO_NULL_CLOSEST_HIT_SHADERS_KHR  = 15,
-	RAY_TRACING_NO_NULL_MISS_SHADERS_KHR         = 16,
-	RAY_TRACING_NO_NULL_INTERSECTION_SHADERS_KHR = 17,
-	RAY_TRACING_SKIP_TRIANGLES_KHR               = 12,
-	RAY_TRACING_SKIP_AABBS_KHR                   = 13,
-	DEFER_COMPILE_NV                             = 5,
-	CAPTURE_STATISTICS_KHR                       = 6,
-	CAPTURE_INTERNAL_REPRESENTATIONS_KHR         = 7,
-	INDIRECT_BINDABLE_NV                         = 18,
-	LIBRARY_KHR                                  = 11,
-	FAIL_ON_PIPELINE_COMPILE_REQUIRED_EXT        = 8,
-	EARLY_RETURN_ON_FAILURE_EXT                  = 9,
-	VIEW_INDEX_FROM_DEVICE_INDEX_KHR             = VIEW_INDEX_FROM_DEVICE_INDEX,
-	DISPATCH_BASE_KHR                            = DISPATCH_BASE,
+	DISABLE_OPTIMIZATION                               = 0,
+	ALLOW_DERIVATIVES                                  = 1,
+	DERIVATIVE                                         = 2,
+	VIEW_INDEX_FROM_DEVICE_INDEX                       = 3,
+	DISPATCH_BASE                                      = 4,
+	RAY_TRACING_NO_NULL_ANY_HIT_SHADERS_KHR            = 14,
+	RAY_TRACING_NO_NULL_CLOSEST_HIT_SHADERS_KHR        = 15,
+	RAY_TRACING_NO_NULL_MISS_SHADERS_KHR               = 16,
+	RAY_TRACING_NO_NULL_INTERSECTION_SHADERS_KHR       = 17,
+	RAY_TRACING_SKIP_TRIANGLES_KHR                     = 12,
+	RAY_TRACING_SKIP_AABBS_KHR                         = 13,
+	RAY_TRACING_SHADER_GROUP_HANDLE_CAPTURE_REPLAY_KHR = 19,
+	DEFER_COMPILE_NV                                   = 5,
+	CAPTURE_STATISTICS_KHR                             = 6,
+	CAPTURE_INTERNAL_REPRESENTATIONS_KHR               = 7,
+	INDIRECT_BINDABLE_NV                               = 18,
+	LIBRARY_KHR                                        = 11,
+	FAIL_ON_PIPELINE_COMPILE_REQUIRED_EXT              = 8,
+	EARLY_RETURN_ON_FAILURE_EXT                        = 9,
+	VIEW_INDEX_FROM_DEVICE_INDEX_KHR                   = VIEW_INDEX_FROM_DEVICE_INDEX,
+	DISPATCH_BASE_KHR                                  = DISPATCH_BASE,
 }
 
 PipelineShaderStageCreateFlags :: distinct bit_set[PipelineShaderStageCreateFlag; Flags];
@@ -1698,6 +1739,7 @@ DescriptorPoolCreateFlags :: distinct bit_set[DescriptorPoolCreateFlag; Flags];
 DescriptorPoolCreateFlag :: enum Flags {
 	FREE_DESCRIPTOR_SET   = 0,
 	UPDATE_AFTER_BIND     = 1,
+	HOST_ONLY_VALVE       = 2,
 	UPDATE_AFTER_BIND_EXT = UPDATE_AFTER_BIND,
 }
 
@@ -1705,6 +1747,7 @@ DescriptorSetLayoutCreateFlags :: distinct bit_set[DescriptorSetLayoutCreateFlag
 DescriptorSetLayoutCreateFlag :: enum Flags {
 	UPDATE_AFTER_BIND_POOL     = 1,
 	PUSH_DESCRIPTOR_KHR        = 0,
+	HOST_ONLY_POOL_VALVE       = 2,
 	UPDATE_AFTER_BIND_POOL_EXT = UPDATE_AFTER_BIND_POOL,
 }
 
@@ -2150,6 +2193,14 @@ AcquireProfilingLockFlagsKHR :: distinct bit_set[AcquireProfilingLockFlagKHR; Fl
 AcquireProfilingLockFlagKHR :: enum Flags {
 }
 
+FragmentShadingRateCombinerOpKHR :: enum c.int {
+	KEEP    = 0,
+	REPLACE = 1,
+	MIN     = 2,
+	MAX     = 3,
+	MUL     = 4,
+}
+
 PipelineExecutableStatisticFormatKHR :: enum c.int {
 	BOOL32  = 0,
 	INT64   = 1,
@@ -2192,12 +2243,12 @@ DebugReportObjectTypeEXT :: enum c.int {
 	VALIDATION_CACHE_EXT           = 33,
 	SAMPLER_YCBCR_CONVERSION       = 1000156000,
 	DESCRIPTOR_UPDATE_TEMPLATE     = 1000085000,
-	ACCELERATION_STRUCTURE_KHR     = 1000165000,
+	ACCELERATION_STRUCTURE_KHR     = 1000150000,
+	ACCELERATION_STRUCTURE_NV      = 1000165000,
 	DEBUG_REPORT                   = DEBUG_REPORT_CALLBACK_EXT,
 	VALIDATION_CACHE               = VALIDATION_CACHE_EXT,
 	DESCRIPTOR_UPDATE_TEMPLATE_KHR = DESCRIPTOR_UPDATE_TEMPLATE,
 	SAMPLER_YCBCR_CONVERSION_KHR   = SAMPLER_YCBCR_CONVERSION,
-	ACCELERATION_STRUCTURE_NV      = ACCELERATION_STRUCTURE_KHR,
 }
 
 DebugReportFlagsEXT :: distinct bit_set[DebugReportFlagEXT; Flags];
@@ -2352,7 +2403,7 @@ RayTracingShaderGroupTypeKHR :: enum c.int {
 GeometryTypeKHR :: enum c.int {
 	TRIANGLES    = 0,
 	AABBS        = 1,
-	INSTANCES    = 1000150000,
+	INSTANCES    = 2,
 	TRIANGLES_NV = TRIANGLES,
 	AABBS_NV     = AABBS,
 }
@@ -2360,6 +2411,7 @@ GeometryTypeKHR :: enum c.int {
 AccelerationStructureTypeKHR :: enum c.int {
 	TOP_LEVEL       = 0,
 	BOTTOM_LEVEL    = 1,
+	GENERIC         = 2,
 	TOP_LEVEL_NV    = TOP_LEVEL,
 	BOTTOM_LEVEL_NV = BOTTOM_LEVEL,
 }
@@ -2373,13 +2425,10 @@ CopyAccelerationStructureModeKHR :: enum c.int {
 	COMPACT_NV  = COMPACT,
 }
 
-AccelerationStructureMemoryRequirementsTypeKHR :: enum c.int {
-	OBJECT            = 0,
-	BUILD_SCRATCH     = 1,
-	UPDATE_SCRATCH    = 2,
-	OBJECT_NV         = OBJECT,
-	BUILD_SCRATCH_NV  = BUILD_SCRATCH,
-	UPDATE_SCRATCH_NV = UPDATE_SCRATCH,
+AccelerationStructureMemoryRequirementsTypeNV :: enum c.int {
+	OBJECT         = 0,
+	BUILD_SCRATCH  = 1,
+	UPDATE_SCRATCH = 2,
 }
 
 GeometryFlagsKHR :: distinct bit_set[GeometryFlagKHR; Flags];
@@ -2562,6 +2611,14 @@ IndirectCommandsLayoutUsageFlagNV :: enum Flags {
 	UNORDERED_SEQUENCES = 2,
 }
 
+DeviceMemoryReportEventTypeEXT :: enum c.int {
+	ALLOCATE          = 0,
+	FREE              = 1,
+	IMPORT            = 2,
+	UNIMPORT          = 3,
+	ALLOCATION_FAILED = 4,
+}
+
 PrivateDataSlotCreateFlagsEXT :: distinct bit_set[PrivateDataSlotCreateFlagEXT; Flags];
 PrivateDataSlotCreateFlagEXT :: enum Flags {
 }
@@ -2573,6 +2630,54 @@ DeviceDiagnosticsConfigFlagNV :: enum Flags {
 	ENABLE_AUTOMATIC_CHECKPOINTS = 2,
 }
 
+FragmentShadingRateTypeNV :: enum c.int {
+	FRAGMENT_SIZE = 0,
+	ENUMS         = 1,
+}
+
+FragmentShadingRateNV :: enum c.int {
+	_1_INVOCATION_PER_PIXEL      = 0,
+	_1_INVOCATION_PER_1X2_PIXELS = 1,
+	_1_INVOCATION_PER_2X1_PIXELS = 4,
+	_1_INVOCATION_PER_2X2_PIXELS = 5,
+	_1_INVOCATION_PER_2X4_PIXELS = 6,
+	_1_INVOCATION_PER_4X2_PIXELS = 9,
+	_1_INVOCATION_PER_4X4_PIXELS = 10,
+	_2_INVOCATIONS_PER_PIXEL     = 11,
+	_4_INVOCATIONS_PER_PIXEL     = 12,
+	_8_INVOCATIONS_PER_PIXEL     = 13,
+	_16_INVOCATIONS_PER_PIXEL    = 14,
+	NO_INVOCATIONS               = 15,
+}
+
+BuildAccelerationStructureModeKHR :: enum c.int {
+	BUILD  = 0,
+	UPDATE = 1,
+}
+
+AccelerationStructureBuildTypeKHR :: enum c.int {
+	HOST           = 0,
+	DEVICE         = 1,
+	HOST_OR_DEVICE = 2,
+}
+
+AccelerationStructureCompatibilityKHR :: enum c.int {
+	COMPATIBLE   = 0,
+	INCOMPATIBLE = 1,
+}
+
+AccelerationStructureCreateFlagsKHR :: distinct bit_set[AccelerationStructureCreateFlagKHR; Flags];
+AccelerationStructureCreateFlagKHR :: enum Flags {
+	DEVICE_ADDRESS_CAPTURE_REPLAY = 0,
+}
+
+ShaderGroupShaderKHR :: enum c.int {
+	GENERAL      = 0,
+	CLOSEST_HIT  = 1,
+	ANY_HIT      = 2,
+	INTERSECTION = 3,
+}
+
 FullScreenExclusiveEXT :: enum c.int {
 	DEFAULT                = 0,
 	ALLOWED                = 1,
@@ -2580,75 +2685,77 @@ FullScreenExclusiveEXT :: enum c.int {
 	APPLICATION_CONTROLLED = 3,
 }
 
-InstanceCreateFlags                                  :: distinct bit_set[InstanceCreateFlag; Flags];
-InstanceCreateFlag                                   :: enum u32 {};
-PipelineColorBlendStateCreateFlags                   :: distinct bit_set[PipelineColorBlendStateCreateFlag; Flags];
-PipelineColorBlendStateCreateFlag                    :: enum u32 {};
-PipelineRasterizationStateStreamCreateFlagsEXT       :: distinct bit_set[PipelineRasterizationStateStreamCreateFlagEXT; Flags];
-PipelineRasterizationStateStreamCreateFlagEXT        :: enum u32 {};
-PipelineTessellationStateCreateFlags                 :: distinct bit_set[PipelineTessellationStateCreateFlag; Flags];
-PipelineTessellationStateCreateFlag                  :: enum u32 {};
-QueryPoolCreateFlags                                 :: distinct bit_set[QueryPoolCreateFlag; Flags];
-QueryPoolCreateFlag                                  :: enum u32 {};
-PipelineLayoutCreateFlags                            :: distinct bit_set[PipelineLayoutCreateFlag; Flags];
-PipelineLayoutCreateFlag                             :: enum u32 {};
-PipelineRasterizationDepthClipStateCreateFlagsEXT    :: distinct bit_set[PipelineRasterizationDepthClipStateCreateFlagEXT; Flags];
-PipelineRasterizationDepthClipStateCreateFlagEXT     :: enum u32 {};
-DescriptorPoolResetFlags                             :: distinct bit_set[DescriptorPoolResetFlag; Flags];
-DescriptorPoolResetFlag                              :: enum u32 {};
-HeadlessSurfaceCreateFlagsEXT                        :: distinct bit_set[HeadlessSurfaceCreateFlagEXT; Flags];
-HeadlessSurfaceCreateFlagEXT                         :: enum u32 {};
-DisplayModeCreateFlagsKHR                            :: distinct bit_set[DisplayModeCreateFlagKHR; Flags];
-DisplayModeCreateFlagKHR                             :: enum u32 {};
-PipelineCoverageToColorStateCreateFlagsNV            :: distinct bit_set[PipelineCoverageToColorStateCreateFlagNV; Flags];
-PipelineCoverageToColorStateCreateFlagNV             :: enum u32 {};
-PipelineViewportSwizzleStateCreateFlagsNV            :: distinct bit_set[PipelineViewportSwizzleStateCreateFlagNV; Flags];
-PipelineViewportSwizzleStateCreateFlagNV             :: enum u32 {};
-PipelineVertexInputStateCreateFlags                  :: distinct bit_set[PipelineVertexInputStateCreateFlag; Flags];
-PipelineVertexInputStateCreateFlag                   :: enum u32 {};
-MemoryMapFlags                                       :: distinct bit_set[MemoryMapFlag; Flags];
-MemoryMapFlag                                        :: enum u32 {};
-PipelineMultisampleStateCreateFlags                  :: distinct bit_set[PipelineMultisampleStateCreateFlag; Flags];
-PipelineMultisampleStateCreateFlag                   :: enum u32 {};
-BufferViewCreateFlags                                :: distinct bit_set[BufferViewCreateFlag; Flags];
-BufferViewCreateFlag                                 :: enum u32 {};
-PipelineInputAssemblyStateCreateFlags                :: distinct bit_set[PipelineInputAssemblyStateCreateFlag; Flags];
-PipelineInputAssemblyStateCreateFlag                 :: enum u32 {};
-CommandPoolTrimFlags                                 :: distinct bit_set[CommandPoolTrimFlag; Flags];
-CommandPoolTrimFlag                                  :: enum u32 {};
-PipelineDynamicStateCreateFlags                      :: distinct bit_set[PipelineDynamicStateCreateFlag; Flags];
-PipelineDynamicStateCreateFlag                       :: enum u32 {};
-PipelineRasterizationStateCreateFlags                :: distinct bit_set[PipelineRasterizationStateCreateFlag; Flags];
-PipelineRasterizationStateCreateFlag                 :: enum u32 {};
-PipelineDiscardRectangleStateCreateFlagsEXT          :: distinct bit_set[PipelineDiscardRectangleStateCreateFlagEXT; Flags];
-PipelineDiscardRectangleStateCreateFlagEXT           :: enum u32 {};
-PipelineDepthStencilStateCreateFlags                 :: distinct bit_set[PipelineDepthStencilStateCreateFlag; Flags];
-PipelineDepthStencilStateCreateFlag                  :: enum u32 {};
-EventCreateFlags                                     :: distinct bit_set[EventCreateFlag; Flags];
-EventCreateFlag                                      :: enum u32 {};
-PipelineViewportStateCreateFlags                     :: distinct bit_set[PipelineViewportStateCreateFlag; Flags];
-PipelineViewportStateCreateFlag                      :: enum u32 {};
-ValidationCacheCreateFlagsEXT                        :: distinct bit_set[ValidationCacheCreateFlagEXT; Flags];
-ValidationCacheCreateFlagEXT                         :: enum u32 {};
-PipelineCoverageReductionStateCreateFlagsNV          :: distinct bit_set[PipelineCoverageReductionStateCreateFlagNV; Flags];
-PipelineCoverageReductionStateCreateFlagNV           :: enum u32 {};
-PipelineCoverageModulationStateCreateFlagsNV         :: distinct bit_set[PipelineCoverageModulationStateCreateFlagNV; Flags];
-PipelineCoverageModulationStateCreateFlagNV          :: enum u32 {};
-DisplaySurfaceCreateFlagsKHR                         :: distinct bit_set[DisplaySurfaceCreateFlagKHR; Flags];
-DisplaySurfaceCreateFlagKHR                          :: enum u32 {};
 DeviceCreateFlags                                    :: distinct bit_set[DeviceCreateFlag; Flags];
 DeviceCreateFlag                                     :: enum u32 {};
-Win32SurfaceCreateFlagsKHR                           :: distinct bit_set[Win32SurfaceCreateFlagKHR; Flags];
-Win32SurfaceCreateFlagKHR                            :: enum u32 {};
-DebugUtilsMessengerCreateFlagsEXT                    :: distinct bit_set[DebugUtilsMessengerCreateFlagEXT; Flags];
-DebugUtilsMessengerCreateFlagEXT                     :: enum u32 {};
-DebugUtilsMessengerCallbackDataFlagsEXT              :: distinct bit_set[DebugUtilsMessengerCallbackDataFlagEXT; Flags];
-DebugUtilsMessengerCallbackDataFlagEXT               :: enum u32 {};
+PipelineCoverageToColorStateCreateFlagsNV            :: distinct bit_set[PipelineCoverageToColorStateCreateFlagNV; Flags];
+PipelineCoverageToColorStateCreateFlagNV             :: enum u32 {};
+DisplayModeCreateFlagsKHR                            :: distinct bit_set[DisplayModeCreateFlagKHR; Flags];
+DisplayModeCreateFlagKHR                             :: enum u32 {};
+PipelineDepthStencilStateCreateFlags                 :: distinct bit_set[PipelineDepthStencilStateCreateFlag; Flags];
+PipelineDepthStencilStateCreateFlag                  :: enum u32 {};
+DeviceMemoryReportFlagsEXT                           :: distinct bit_set[DeviceMemoryReportFlagEXT; Flags];
+DeviceMemoryReportFlagEXT                            :: enum u32 {};
+PipelineRasterizationStateStreamCreateFlagsEXT       :: distinct bit_set[PipelineRasterizationStateStreamCreateFlagEXT; Flags];
+PipelineRasterizationStateStreamCreateFlagEXT        :: enum u32 {};
+ValidationCacheCreateFlagsEXT                        :: distinct bit_set[ValidationCacheCreateFlagEXT; Flags];
+ValidationCacheCreateFlagEXT                         :: enum u32 {};
+HeadlessSurfaceCreateFlagsEXT                        :: distinct bit_set[HeadlessSurfaceCreateFlagEXT; Flags];
+HeadlessSurfaceCreateFlagEXT                         :: enum u32 {};
+PipelineCoverageReductionStateCreateFlagsNV          :: distinct bit_set[PipelineCoverageReductionStateCreateFlagNV; Flags];
+PipelineCoverageReductionStateCreateFlagNV           :: enum u32 {};
+PipelineViewportSwizzleStateCreateFlagsNV            :: distinct bit_set[PipelineViewportSwizzleStateCreateFlagNV; Flags];
+PipelineViewportSwizzleStateCreateFlagNV             :: enum u32 {};
+PipelineViewportStateCreateFlags                     :: distinct bit_set[PipelineViewportStateCreateFlag; Flags];
+PipelineViewportStateCreateFlag                      :: enum u32 {};
+EventCreateFlags                                     :: distinct bit_set[EventCreateFlag; Flags];
+EventCreateFlag                                      :: enum u32 {};
+InstanceCreateFlags                                  :: distinct bit_set[InstanceCreateFlag; Flags];
+InstanceCreateFlag                                   :: enum u32 {};
+DescriptorPoolResetFlags                             :: distinct bit_set[DescriptorPoolResetFlag; Flags];
+DescriptorPoolResetFlag                              :: enum u32 {};
 PipelineRasterizationConservativeStateCreateFlagsEXT :: distinct bit_set[PipelineRasterizationConservativeStateCreateFlagEXT; Flags];
 PipelineRasterizationConservativeStateCreateFlagEXT  :: enum u32 {};
-SemaphoreCreateFlags                                 :: distinct bit_set[SemaphoreCreateFlag; Flags];
-SemaphoreCreateFlag                                  :: enum u32 {};
+PipelineTessellationStateCreateFlags                 :: distinct bit_set[PipelineTessellationStateCreateFlag; Flags];
+PipelineTessellationStateCreateFlag                  :: enum u32 {};
+Win32SurfaceCreateFlagsKHR                           :: distinct bit_set[Win32SurfaceCreateFlagKHR; Flags];
+Win32SurfaceCreateFlagKHR                            :: enum u32 {};
+CommandPoolTrimFlags                                 :: distinct bit_set[CommandPoolTrimFlag; Flags];
+CommandPoolTrimFlag                                  :: enum u32 {};
+PipelineInputAssemblyStateCreateFlags                :: distinct bit_set[PipelineInputAssemblyStateCreateFlag; Flags];
+PipelineInputAssemblyStateCreateFlag                 :: enum u32 {};
+PipelineVertexInputStateCreateFlags                  :: distinct bit_set[PipelineVertexInputStateCreateFlag; Flags];
+PipelineVertexInputStateCreateFlag                   :: enum u32 {};
+PipelineRasterizationStateCreateFlags                :: distinct bit_set[PipelineRasterizationStateCreateFlag; Flags];
+PipelineRasterizationStateCreateFlag                 :: enum u32 {};
+BufferViewCreateFlags                                :: distinct bit_set[BufferViewCreateFlag; Flags];
+BufferViewCreateFlag                                 :: enum u32 {};
+PipelineDiscardRectangleStateCreateFlagsEXT          :: distinct bit_set[PipelineDiscardRectangleStateCreateFlagEXT; Flags];
+PipelineDiscardRectangleStateCreateFlagEXT           :: enum u32 {};
+DisplaySurfaceCreateFlagsKHR                         :: distinct bit_set[DisplaySurfaceCreateFlagKHR; Flags];
+DisplaySurfaceCreateFlagKHR                          :: enum u32 {};
+PipelineRasterizationDepthClipStateCreateFlagsEXT    :: distinct bit_set[PipelineRasterizationDepthClipStateCreateFlagEXT; Flags];
+PipelineRasterizationDepthClipStateCreateFlagEXT     :: enum u32 {};
 DescriptorUpdateTemplateCreateFlags                  :: distinct bit_set[DescriptorUpdateTemplateCreateFlag; Flags];
 DescriptorUpdateTemplateCreateFlag                   :: enum u32 {};
+PipelineLayoutCreateFlags                            :: distinct bit_set[PipelineLayoutCreateFlag; Flags];
+PipelineLayoutCreateFlag                             :: enum u32 {};
+MemoryMapFlags                                       :: distinct bit_set[MemoryMapFlag; Flags];
+MemoryMapFlag                                        :: enum u32 {};
+PipelineDynamicStateCreateFlags                      :: distinct bit_set[PipelineDynamicStateCreateFlag; Flags];
+PipelineDynamicStateCreateFlag                       :: enum u32 {};
+PipelineColorBlendStateCreateFlags                   :: distinct bit_set[PipelineColorBlendStateCreateFlag; Flags];
+PipelineColorBlendStateCreateFlag                    :: enum u32 {};
+QueryPoolCreateFlags                                 :: distinct bit_set[QueryPoolCreateFlag; Flags];
+QueryPoolCreateFlag                                  :: enum u32 {};
+SemaphoreCreateFlags                                 :: distinct bit_set[SemaphoreCreateFlag; Flags];
+SemaphoreCreateFlag                                  :: enum u32 {};
+DebugUtilsMessengerCallbackDataFlagsEXT              :: distinct bit_set[DebugUtilsMessengerCallbackDataFlagEXT; Flags];
+DebugUtilsMessengerCallbackDataFlagEXT               :: enum u32 {};
+PipelineMultisampleStateCreateFlags                  :: distinct bit_set[PipelineMultisampleStateCreateFlag; Flags];
+PipelineMultisampleStateCreateFlag                   :: enum u32 {};
+PipelineCoverageModulationStateCreateFlagsNV         :: distinct bit_set[PipelineCoverageModulationStateCreateFlagNV; Flags];
+PipelineCoverageModulationStateCreateFlagNV          :: enum u32 {};
+DebugUtilsMessengerCreateFlagsEXT                    :: distinct bit_set[DebugUtilsMessengerCreateFlagEXT; Flags];
+DebugUtilsMessengerCreateFlagEXT                     :: enum u32 {};
 
 

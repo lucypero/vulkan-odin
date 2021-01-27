@@ -7,7 +7,7 @@ import "core:c"
 API_VERSION_1_0 :: (1<<22) | (0<<12) | (0);
 
 MAKE_VERSION :: proc(major, minor, patch: u32) -> u32 {
-    return (major<<22) | (minor<<12) | (patch);
+	return (major<<22) | (minor<<12) | (patch);
 }
 
 // Base types
@@ -49,8 +49,8 @@ MAX_DRIVER_NAME_SIZE_KHR      :: 256;
 MAX_DRIVER_INFO_SIZE_KHR      :: 256;
 MAX_QUEUE_FAMILY_EXTERNAL     :: ~u32(0)-1;
 
-// General Constants
-HEADER_VERSION       :: 153;
+	// General Constants
+HEADER_VERSION       :: 168;
 MAX_DRIVER_NAME_SIZE :: 256;
 MAX_DRIVER_INFO_SIZE :: 256;
 
@@ -211,6 +211,12 @@ KHR_TIMELINE_SEMAPHORE_EXTENSION_NAME                 :: "VK_KHR_timeline_semaph
 KHR_vulkan_memory_model                               :: 1;
 KHR_VULKAN_MEMORY_MODEL_SPEC_VERSION                  :: 3;
 KHR_VULKAN_MEMORY_MODEL_EXTENSION_NAME                :: "VK_KHR_vulkan_memory_model";
+KHR_shader_terminate_invocation                       :: 1;
+KHR_SHADER_TERMINATE_INVOCATION_SPEC_VERSION          :: 1;
+KHR_SHADER_TERMINATE_INVOCATION_EXTENSION_NAME        :: "VK_KHR_shader_terminate_invocation";
+KHR_fragment_shading_rate                             :: 1;
+KHR_FRAGMENT_SHADING_RATE_SPEC_VERSION                :: 1;
+KHR_FRAGMENT_SHADING_RATE_EXTENSION_NAME              :: "VK_KHR_fragment_shading_rate";
 KHR_spirv_1_4                                         :: 1;
 KHR_SPIRV_1_4_SPEC_VERSION                            :: 1;
 KHR_SPIRV_1_4_EXTENSION_NAME                          :: "VK_KHR_spirv_1_4";
@@ -226,12 +232,27 @@ KHR_UNIFORM_BUFFER_STANDARD_LAYOUT_EXTENSION_NAME     :: "VK_KHR_uniform_buffer_
 KHR_buffer_device_address                             :: 1;
 KHR_BUFFER_DEVICE_ADDRESS_SPEC_VERSION                :: 1;
 KHR_BUFFER_DEVICE_ADDRESS_EXTENSION_NAME              :: "VK_KHR_buffer_device_address";
+KHR_deferred_host_operations                          :: 1;
+KHR_DEFERRED_HOST_OPERATIONS_SPEC_VERSION             :: 4;
+KHR_DEFERRED_HOST_OPERATIONS_EXTENSION_NAME           :: "VK_KHR_deferred_host_operations";
 KHR_pipeline_executable_properties                    :: 1;
 KHR_PIPELINE_EXECUTABLE_PROPERTIES_SPEC_VERSION       :: 1;
 KHR_PIPELINE_EXECUTABLE_PROPERTIES_EXTENSION_NAME     :: "VK_KHR_pipeline_executable_properties";
+KHR_pipeline_library                                  :: 1;
+KHR_PIPELINE_LIBRARY_SPEC_VERSION                     :: 1;
+KHR_PIPELINE_LIBRARY_EXTENSION_NAME                   :: "VK_KHR_pipeline_library";
 KHR_shader_non_semantic_info                          :: 1;
 KHR_SHADER_NON_SEMANTIC_INFO_SPEC_VERSION             :: 1;
 KHR_SHADER_NON_SEMANTIC_INFO_EXTENSION_NAME           :: "VK_KHR_shader_non_semantic_info";
+KHR_zero_initialize_workgroup_memory                  :: 1;
+KHR_ZERO_INITIALIZE_WORKGROUP_MEMORY_SPEC_VERSION     :: 1;
+KHR_ZERO_INITIALIZE_WORKGROUP_MEMORY_EXTENSION_NAME   :: "VK_KHR_zero_initialize_workgroup_memory";
+KHR_workgroup_memory_explicit_layout                  :: 1;
+KHR_WORKGROUP_MEMORY_EXPLICIT_LAYOUT_SPEC_VERSION     :: 1;
+KHR_WORKGROUP_MEMORY_EXPLICIT_LAYOUT_EXTENSION_NAME   :: "VK_KHR_workgroup_memory_explicit_layout";
+KHR_copy_commands2                                    :: 1;
+KHR_COPY_COMMANDS_2_SPEC_VERSION                      :: 1;
+KHR_COPY_COMMANDS_2_EXTENSION_NAME                    :: "VK_KHR_copy_commands2";
 EXT_debug_report                                      :: 1;
 EXT_DEBUG_REPORT_SPEC_VERSION                         :: 9;
 EXT_DEBUG_REPORT_EXTENSION_NAME                       :: "VK_EXT_debug_report";
@@ -505,6 +526,9 @@ AMD_SHADER_CORE_PROPERTIES_2_EXTENSION_NAME           :: "VK_AMD_shader_core_pro
 AMD_device_coherent_memory                            :: 1;
 AMD_DEVICE_COHERENT_MEMORY_SPEC_VERSION               :: 1;
 AMD_DEVICE_COHERENT_MEMORY_EXTENSION_NAME             :: "VK_AMD_device_coherent_memory";
+EXT_shader_image_atomic_int64                         :: 1;
+EXT_SHADER_IMAGE_ATOMIC_INT64_SPEC_VERSION            :: 1;
+EXT_SHADER_IMAGE_ATOMIC_INT64_EXTENSION_NAME          :: "VK_EXT_shader_image_atomic_int64";
 EXT_memory_budget                                     :: 1;
 EXT_MEMORY_BUDGET_SPEC_VERSION                        :: 1;
 EXT_MEMORY_BUDGET_EXTENSION_NAME                      :: "VK_EXT_memory_budget";
@@ -565,6 +589,9 @@ NV_DEVICE_GENERATED_COMMANDS_EXTENSION_NAME           :: "VK_NV_device_generated
 EXT_texel_buffer_alignment                            :: 1;
 EXT_TEXEL_BUFFER_ALIGNMENT_SPEC_VERSION               :: 1;
 EXT_TEXEL_BUFFER_ALIGNMENT_EXTENSION_NAME             :: "VK_EXT_texel_buffer_alignment";
+EXT_device_memory_report                              :: 1;
+EXT_DEVICE_MEMORY_REPORT_SPEC_VERSION                 :: 2;
+EXT_DEVICE_MEMORY_REPORT_EXTENSION_NAME               :: "VK_EXT_device_memory_report";
 EXT_robustness2                                       :: 1;
 EXT_ROBUSTNESS_2_SPEC_VERSION                         :: 1;
 EXT_ROBUSTNESS_2_EXTENSION_NAME                       :: "VK_EXT_robustness2";
@@ -583,6 +610,9 @@ EXT_PIPELINE_CREATION_CACHE_CONTROL_EXTENSION_NAME    :: "VK_EXT_pipeline_creati
 NV_device_diagnostics_config                          :: 1;
 NV_DEVICE_DIAGNOSTICS_CONFIG_SPEC_VERSION             :: 1;
 NV_DEVICE_DIAGNOSTICS_CONFIG_EXTENSION_NAME           :: "VK_NV_device_diagnostics_config";
+NV_fragment_shading_rate_enums                        :: 1;
+NV_FRAGMENT_SHADING_RATE_ENUMS_SPEC_VERSION           :: 1;
+NV_FRAGMENT_SHADING_RATE_ENUMS_EXTENSION_NAME         :: "VK_NV_fragment_shading_rate_enums";
 EXT_fragment_density_map2                             :: 1;
 EXT_FRAGMENT_DENSITY_MAP_2_SPEC_VERSION               :: 1;
 EXT_FRAGMENT_DENSITY_MAP_2_EXTENSION_NAME             :: "VK_EXT_fragment_density_map2";
@@ -592,6 +622,18 @@ EXT_IMAGE_ROBUSTNESS_EXTENSION_NAME                   :: "VK_EXT_image_robustnes
 EXT_4444_formats                                      :: 1;
 EXT_4444_FORMATS_SPEC_VERSION                         :: 1;
 EXT_4444_FORMATS_EXTENSION_NAME                       :: "VK_EXT_4444_formats";
+NV_acquire_winrt_display                              :: 1;
+NV_ACQUIRE_WINRT_DISPLAY_SPEC_VERSION                 :: 1;
+NV_ACQUIRE_WINRT_DISPLAY_EXTENSION_NAME               :: "VK_NV_acquire_winrt_display";
+KHR_acceleration_structure                            :: 1;
+KHR_ACCELERATION_STRUCTURE_SPEC_VERSION               :: 11;
+KHR_ACCELERATION_STRUCTURE_EXTENSION_NAME             :: "VK_KHR_acceleration_structure";
+KHR_ray_tracing_pipeline                              :: 1;
+KHR_RAY_TRACING_PIPELINE_SPEC_VERSION                 :: 1;
+KHR_RAY_TRACING_PIPELINE_EXTENSION_NAME               :: "VK_KHR_ray_tracing_pipeline";
+KHR_ray_query                                         :: 1;
+KHR_RAY_QUERY_SPEC_VERSION                            :: 1;
+KHR_RAY_QUERY_EXTENSION_NAME                          :: "VK_KHR_ray_query";
 KHR_win32_surface                                     :: 1;
 KHR_WIN32_SURFACE_SPEC_VERSION                        :: 6;
 KHR_WIN32_SURFACE_EXTENSION_NAME                      :: "VK_KHR_win32_surface";
@@ -649,12 +691,14 @@ SurfaceKHR                    :: distinct NonDispatchableHandle;
 SwapchainKHR                  :: distinct NonDispatchableHandle;
 DisplayKHR                    :: distinct NonDispatchableHandle;
 DisplayModeKHR                :: distinct NonDispatchableHandle;
+DeferredOperationKHR          :: distinct NonDispatchableHandle;
 DebugReportCallbackEXT        :: distinct NonDispatchableHandle;
 DebugUtilsMessengerEXT        :: distinct NonDispatchableHandle;
 ValidationCacheEXT            :: distinct NonDispatchableHandle;
-AccelerationStructureKHR      :: distinct NonDispatchableHandle;
+AccelerationStructureNV       :: distinct NonDispatchableHandle;
 PerformanceConfigurationINTEL :: distinct NonDispatchableHandle;
 IndirectCommandsLayoutNV      :: distinct NonDispatchableHandle;
 PrivateDataSlotEXT            :: distinct NonDispatchableHandle;
+AccelerationStructureKHR      :: distinct NonDispatchableHandle;
 
 
